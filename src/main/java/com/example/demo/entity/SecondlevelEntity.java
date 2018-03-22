@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * @author li
@@ -72,5 +73,22 @@ public class SecondlevelEntity {
 
     public void setSecondNameEnlish(String secondNameEnlish) {
         this.secondNameEnlish = secondNameEnlish;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SecondlevelEntity that = (SecondlevelEntity) o;
+        return Objects.equals(secondId, that.secondId) &&
+                Objects.equals(firstId, that.firstId) &&
+                Objects.equals(secondName, that.secondName) &&
+                Objects.equals(secondNameEnlish, that.secondNameEnlish);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(secondId, firstId, secondName, secondNameEnlish);
     }
 }

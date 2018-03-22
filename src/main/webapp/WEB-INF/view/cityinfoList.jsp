@@ -11,7 +11,7 @@
                 
                     <td>
 						<div class="buttonActive">
-                            <div class="buttonContent">
+                            <div class="buttonContent"> 
                                 <button type="submit">检索</button>
                             </div>
                         </div>

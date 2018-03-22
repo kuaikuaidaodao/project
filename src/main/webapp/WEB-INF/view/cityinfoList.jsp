@@ -3,9 +3,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="sf"  uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    List<cityinfoEntity> list =request.getParameter("")
-%>
 <div class="pageHeader">
     <form onsubmit="return navTabSearch(this);" action="/trainee.do?method=list" method="post">
         <div class="searchBar">

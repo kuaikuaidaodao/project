@@ -20,6 +20,7 @@ public class UserinfoController{
 
     @Autowired
     IUserinfoService iUserinfoService;
+
    /*
      登陆
     */
@@ -45,6 +46,7 @@ public class UserinfoController{
         return userinfo;
 
     }
+    
    /*
      增加 修改
     */

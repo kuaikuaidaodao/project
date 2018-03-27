@@ -10,13 +10,18 @@ import com.example.demo.dao.IFileDao;
 import com.example.demo.entity.FileEn;
 import com.example.demo.entity.FileEntity;
 
+/**
+ * @author xwj
+ * @date 2018年3月27日 下午3:52:37
+ * @description 文件管理
+ */
 @Service
 public class FileServiceImpl implements IFileService{
 
 	@Autowired
 	IFileDao fileDao;
 	@Override
-	public FileEn findById(Long id) {
+	public List<FileEn> findById(Long id) {
 		// TODO Auto-generated method stub
 		return fileDao.findById(id);
 	}

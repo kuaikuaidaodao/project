@@ -10,11 +10,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- * 
+/** 
  * @author xwj
  * @date 2018年3月27日 上午10:06:01
- * @description  文件英文名
+ * @description  文件管理英文版
  */
 public class FileEn {
 
@@ -26,7 +25,7 @@ public class FileEn {
 	/**
 	 * 文件英文名
 	 */
-	private String fileEnName;
+	private String fileName;
 	/**
 	 * 文件地址
 	 */
@@ -64,11 +63,11 @@ public class FileEn {
 		this.id = id;
 	}
 
-	public String getFileEnName() {
-		return fileEnName;
+	public String getFileName() {
+		return fileName;
 	}
 
-	public void setFileEnName(String fileEnName) {
-		this.fileEnName = fileEnName;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 }

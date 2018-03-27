@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.biz.IFileService;
 import com.example.demo.dao.IFileRepository;
+import com.example.demo.entity.FileEn;
 import com.example.demo.entity.FileEntity;
 
 /**
@@ -48,27 +49,27 @@ public class FileController {
 	@ResponseBody
 	public List findAll() {
 		Locale locale = LocaleContextHolder.getLocale();
-		System.out.println(locale);
+		//System.out.println(locale);
 		if (locale.toString() != null && locale.toString().equals("en_US")) {
-			System.out.println("en_US************************");
+			//System.out.println("en_US************************");
 			return fileService.findAll();
 		} else {
-
-			System.out.println("zh********************");
+			//System.out.println("zh********************");
 			return fileRepository.findAll();
 		}
 
 	}
 
 	// 根据文件id查询   
-/*	@RequestMapping("/findOne")
+	@RequestMapping("/findOne") 
 	@ResponseBody
-	public FileEntity findOne(Long id) {
+	public List findOne(Long id) {
 		Locale locale = LocaleContextHolder.getLocale();
-		if (locale != null && locale.equals("en_US")) {
+		if (locale.toString() != null && locale.toString().equals("en_US")) {
+			//System.out.println("en_US************************");
 			return fileService.findById(id);
 		} else {
-			return fileRepository.findOne(id);
+			return  (List) fileRepository.findOne(id);
 		}
-	}*/
+	}
 }

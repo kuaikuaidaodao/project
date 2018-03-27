@@ -29,7 +29,7 @@ public class FileEntity {
 	/**
 	 * 文件中文名称
 	 */
-	private String fileZhName;
+	private String fileName;
 	
 	/**
 	 * 文件地址
@@ -65,12 +65,12 @@ public class FileEntity {
 
 	@Basic
 	@Column(name = "file_zh_name")
-	public String getFileZhName() {
-		return fileZhName;
+	public String getFileName() {
+		return fileName;
 	}
 
-	public void setFileZhName(String fileZhName) {
-		this.fileZhName = fileZhName;
+	public void setFileName(String fileZhName) {
+		this.fileName = fileZhName;
 	}
 
 	@Basic

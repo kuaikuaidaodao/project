@@ -46,6 +46,11 @@ public class Banner {
 	 * 添加时间
 	 */
 	private Date time;
+	
+	/**
+	 * 英文图片
+	 */
+	private String imgEnUrl;
 
 	public Banner() {
 		super();
@@ -101,5 +106,15 @@ public class Banner {
 
 	public void setTime(Date time) {
 		this.time = time;
+	}
+
+	 @Basic
+	 @Column(name = "img_en_url")
+	public String getImgEnUrl() {
+		return imgEnUrl;
+	}
+
+	public void setImgEnUrl(String imgEnUrl) {
+		this.imgEnUrl = imgEnUrl;
 	}
 }

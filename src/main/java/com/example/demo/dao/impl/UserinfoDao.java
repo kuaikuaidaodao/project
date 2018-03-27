@@ -1,7 +1,6 @@
 package com.example.demo.dao.impl;
 
 import com.example.demo.dao.IUserinfoDao;
-import com.example.demo.entity.PolicyEntity;
 import com.example.demo.entity.UserinfoEntity;
 import org.springframework.stereotype.Repository;
 

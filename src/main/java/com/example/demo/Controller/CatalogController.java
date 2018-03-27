@@ -98,7 +98,7 @@ public class CatalogController {
 //  }
   /**
    *@Author:liyong
-   *@Description: 轮播图上传
+   *@Description: 文件上传
    *@Date: 14:23 2017/11/27
    */
   @RequestMapping("/addPic")
@@ -106,10 +106,10 @@ public class CatalogController {
   //处理文件上传
   public  String uploadImg(@RequestParam("file") MultipartFile file,
                                         HttpServletRequest request) {
-//    String contentType = file.getContentType();
     String filePath=null;
     String ss=null;
     String fileName = file.getOriginalFilename();
+    fileName=fileName.substring(fileName.lastIndexOf("."));
     //获取跟目录
     File path = null;
     try {
@@ -142,27 +142,6 @@ public class CatalogController {
     }
     //返回json
     return fileName;
-  }
-  @RequestMapping("/test")
-  @ResponseBody
- public  String test(){
-    String s=null;
-    try {
-      System.out.println("------------------------------------");
-      Properties props = new Properties();
-      props.load(new FileReader(ResourceUtils.getURL("classpath:").getPath()+"\\messages_en_US.properties"));
-      System.out.println(props.getProperty("kitty"));
-//      props.setProperty("kitty", iCatalogService.findAll().toString());
-      s=props.getProperty("kitty");
-//持久化配置文件
-      File file = new File(ResourceUtils.getURL("classpath:").getPath()+"\\messages_en_US.properties");
-      Writer fw = new FileWriter(file);
-      props.store(fw, "conmments");
-      fw.close();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return s;
   }
     /**
      * 中英文判断

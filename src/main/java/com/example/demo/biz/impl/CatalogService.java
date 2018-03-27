@@ -2,9 +2,7 @@ package com.example.demo.biz.impl;
 
 import com.example.demo.biz.ICatalogService;
 import com.example.demo.biz.IGoodsService;
-import com.example.demo.dao.ICatalogDao;
 import com.example.demo.dao.ICatalogRepository;
-import com.example.demo.dao.ISecondRepository;
 import com.example.demo.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

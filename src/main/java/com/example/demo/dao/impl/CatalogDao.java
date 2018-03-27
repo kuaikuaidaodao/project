@@ -3,7 +3,6 @@ package com.example.demo.dao.impl;
 import com.example.demo.dao.ICatalogDao;
 import com.example.demo.entity.Menu;
 import com.example.demo.entity.MenuEntity;
-import com.example.demo.entity.SecondlevelEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

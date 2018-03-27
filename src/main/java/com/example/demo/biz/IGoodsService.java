@@ -10,7 +10,11 @@ import java.util.List;
  * @create 2018-02-07 14:14
  * @desc 用户
  **/
-public interface IGoodService {
+public interface IGoodsService {
 
     List<GoodEntity> selectBySecondId(Long second_id);
+// 查询商品  英文
+    List findGoodsEnglish(Long menuId);
+    // 查询商品  中文
+    List findGoodsChinese(Long menuId);
 }

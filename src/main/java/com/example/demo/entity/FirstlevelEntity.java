@@ -76,4 +76,13 @@ public class FirstlevelEntity {
 
         return Objects.hash(firstId, firstName, firstNameEnlish);
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "firstId:" + firstId +
+                ", firstName:'" + firstName + '\'' +
+                ", firstNameEnlish:'" + firstNameEnlish + '\'' +
+                '}';
+    }
 }

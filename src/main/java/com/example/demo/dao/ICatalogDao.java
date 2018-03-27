@@ -1,8 +1,6 @@
 package com.example.demo.dao;
 
-import com.example.demo.entity.FirstlevelEntity;
-import com.example.demo.entity.SecondlevelEntity;
-import com.example.demo.entity.UserinfoEntity;
+import com.example.demo.entity.*;
 
 import java.util.List;
 
@@ -14,4 +12,8 @@ import java.util.List;
 public interface ICatalogDao {
 //通过一级目录查二级目录
     List<SecondlevelEntity> findByFirstId(Long firstId);
+
+    List<MenuEntity> findAllByEnglish();
+
+    List<Menu> findAllByChinese();
 }

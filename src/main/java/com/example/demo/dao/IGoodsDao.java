@@ -10,6 +10,6 @@ import java.util.List;
  * @create 2018-02-07 14:15
  * @desc 用户
  **/
-public interface IGoodDao {
+public interface IGoodsDao {
     List<GoodEntity> selectBySecondId(Long second_id);
 }

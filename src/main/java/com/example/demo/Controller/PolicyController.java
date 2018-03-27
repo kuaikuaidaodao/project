@@ -16,7 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author li
@@ -39,6 +42,7 @@ public class PolicyController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
         return iPolicyService.getPolicyByClassify(classify);
     }
 

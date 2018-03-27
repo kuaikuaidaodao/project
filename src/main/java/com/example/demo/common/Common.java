@@ -10,18 +10,6 @@ import java.util.Locale;
  * @desc 公共类
  **/
 public class Common {
-    /**
-     * 中英文判断
-     */
-    public static String local(){
-        Locale locale = LocaleContextHolder.getLocale();
-        String s=locale.toString();
-        if (s.equals("en_US")){
-            return "en_US";
-        }else{
-            return "zh_CN";
-        }
 
-    }
 
 }

@@ -1,10 +1,7 @@
 package com.example.demo.dao.impl;
 
-import com.example.demo.dao.IGoodDao;
-import com.example.demo.dao.IUserinfoDao;
+import com.example.demo.dao.IGoodsDao;
 import com.example.demo.entity.GoodEntity;
-import com.example.demo.entity.PolicyEntity;
-import com.example.demo.entity.UserinfoEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -18,7 +15,7 @@ import java.util.List;
  * @desc 用户
  **/
 @Repository
-public class GoodDao implements IGoodDao {
+public class GoodsDao implements IGoodsDao {
     @PersistenceContext
     private EntityManager entityManager;
 

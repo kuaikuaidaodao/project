@@ -1,15 +1,15 @@
 package com.example.demo.biz.impl;
 
 import com.example.demo.biz.ICatalogService;
-import com.example.demo.biz.IGoodService;
+import com.example.demo.biz.IGoodsService;
 import com.example.demo.dao.ICatalogDao;
 import com.example.demo.dao.ICatalogRepository;
 import com.example.demo.dao.ISecondRepository;
-import com.example.demo.entity.FirstlevelEntity;
-import com.example.demo.entity.SecondlevelEntity;
+import com.example.demo.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,51 +22,32 @@ public class CatalogService implements ICatalogService {
     @Autowired
     ICatalogRepository iCatalogRepository;
     @Autowired
-    ISecondRepository iSecondRepository;
-    @Autowired
-    ICatalogDao iCatalogDao;
-    @Autowired
-    IGoodService iGoodService;
+    IGoodsService iGoodService;
+
     @Override
-    public List<FirstlevelEntity> findAll() {
-        return iCatalogRepository.findAll();
+    public List<Menu> findAllByEnglish(Long parentId) {
+        List<Object[]> list=iCatalogRepository.findAllByEnglish(parentId);
+        return  this.cast(list);
     }
 
     @Override
-    public void saveAndflush(FirstlevelEntity firstlevelEntity) {
-        iCatalogRepository.saveAndFlush(firstlevelEntity);
+    public List<Menu> findAllByChinese(Long parentId) {
+        List<Object[]> list=iCatalogRepository.findAllByChinese(parentId);
+        return  this.cast(list);
     }
-
-    @Override
-    public void delete(String ids) {
-        String[] idss=ids.split(",");
-        if (idss.length>0) {
-            for (String id : idss)
-                if (null==this.findByFirstId(Long.valueOf(id))) {
-                    iCatalogRepository.delete(Long.valueOf(id));
-                }
+    private List<Menu> cast(List<Object[]> list){
+        List<Menu> menu=new ArrayList<>();
+        for (int i=0;i<list.size();i++) {
+            Menu menus=new Menu();
+            Object[] obj=list.get(i);
+            if (null != obj[0]) {
+                menus.setMenuId(Long.valueOf(obj[0].toString()));
+            }
+            if (null != obj[1]) {
+                menus.setMenuName(obj[1].toString());
+            }
+            menu.add(menus);
         }
-    }
-
-    @Override
-    public List<SecondlevelEntity> findByFirstId(Long firstId) {
-        return iCatalogDao.findByFirstId(firstId);
-    }
-
-    @Override
-    public void saveAndflushSecond(SecondlevelEntity secondlevelEntity) {
-        iSecondRepository.saveAndFlush(secondlevelEntity);
-    }
-
-    @Override
-    public void deleteSecond(String ids) {
-        String[] idss=ids.split(",");
-        if (idss.length>0) {
-            for (String id : idss){
-                if (null!=iGoodService.selectBySecondId(Long.valueOf(id)) ){
-                    iSecondRepository.delete(Long.valueOf(id));
-                }
-                }
-        }
+        return menu;
     }
 }

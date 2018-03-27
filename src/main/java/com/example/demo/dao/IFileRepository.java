@@ -14,10 +14,10 @@ import com.example.demo.entity.FileEntity;
  */
 public interface IFileRepository extends JpaRepository<FileEntity, Long>{
 
-	@Query("select id,fileEnName,fileUrl,imgUrl from FileEntity where 1=1")
+	@Query("select id,fileEnName,fileEnUrl,imgUrl from FileEntity where 1=1")
 	List<Object[]> findAllByZh();
 
-	@Query("select id,fileEnName,fileUrl,imgUrl from FileEntity where id=?")
+	@Query("select id,fileEnName,fileEnUrl,imgUrl from FileEntity where id=?")
 	List<Object[]> findOneByZh(Long id);
 
 }

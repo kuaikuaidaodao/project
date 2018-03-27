@@ -51,6 +51,11 @@ public class FileEntity {
 	 */
 	private String fileEnName;
 	
+	/**
+	 * 英文地址
+	 */
+	private String fileEnUrl;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GenericGenerator(name = "persistenceGenerator", strategy = "increment")
@@ -115,5 +120,14 @@ public class FileEntity {
 
 	public void setTime(Date time) {
 		this.time = time;
+	}
+	@Basic
+	@Column(name = "file_en_url")
+	public String getFileEnUrl() {
+		return fileEnUrl;
+	}
+
+	public void setFileEnUrl(String fileEnUrl) {
+		this.fileEnUrl = fileEnUrl;
 	}
 }

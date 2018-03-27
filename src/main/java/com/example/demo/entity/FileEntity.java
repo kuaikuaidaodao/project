@@ -27,9 +27,9 @@ public class FileEntity {
 	private Long id;
 	
 	/**
-	 * 文件名称
+	 * 文件中文名称
 	 */
-	private String fileName;
+	private String fileZhName;
 	
 	/**
 	 * 文件地址
@@ -45,11 +45,12 @@ public class FileEntity {
 	 * 添加时间
 	 */
 	private Date time;
-
-	public FileEntity() {
-		super();
-	}
-
+	
+	/**
+	 * 文件英文名
+	 */
+	private String fileEnName;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GenericGenerator(name = "persistenceGenerator", strategy = "increment")
@@ -63,13 +64,27 @@ public class FileEntity {
 	}
 
 	@Basic
-	@Column(name = "file_name")
-	public String getFileName() {
-		return fileName;
+	@Column(name = "file_zh_name")
+	public String getFileZhName() {
+		return fileZhName;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFileZhName(String fileZhName) {
+		this.fileZhName = fileZhName;
+	}
+
+	@Basic
+	@Column(name = "file_en_name")
+	public String getFileEnName() {
+		return fileEnName;
+	}
+
+	public void setFileEnName(String fileEnName) {
+		this.fileEnName = fileEnName;
+	}
+
+	public FileEntity() {
+		super();
 	}
 
 	@Basic

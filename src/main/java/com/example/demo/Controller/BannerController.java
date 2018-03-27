@@ -1,26 +1,13 @@
 package com.example.demo.Controller;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.example.demo.dao.IBannerRepository;
 import com.example.demo.entity.Banner;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 
@@ -37,7 +24,10 @@ public class BannerController {
 
 	// 修改和增加
 	@RequestMapping("/saveAndFlush")
-	public void saveAndflush(@RequestBody Banner banner) {
+	@ResponseBody
+	public void saveAndflush(Banner banner) {
+		Date d = new Date();
+		banner.setTime(d);
 		bannerRepository.saveAndFlush(banner);
 	}
 

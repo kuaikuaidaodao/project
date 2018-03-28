@@ -19,6 +19,11 @@ import com.example.demo.biz.ICompanyService;
 import com.example.demo.dao.ICompanyRepository;
 import com.example.demo.entity.CompanyEntity;
 
+/**
+ * @author xwj
+ * @date 2018年3月28日 下午5:57:54
+ * @desc 公司简介
+ */
 @Controller
 @RequestMapping("/company")
 public class CompanyController {

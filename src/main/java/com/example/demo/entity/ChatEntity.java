@@ -4,13 +4,14 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Objects;
 
 /**
  * @author li
  * @create 2018-03-28 11:25
  * @desc 聊天实体类
  **/
+@Entity
+@Table(name = "chat")
 public class ChatEntity {
     /**
      * 聊天id

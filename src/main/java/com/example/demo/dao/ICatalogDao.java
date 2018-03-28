@@ -12,6 +12,10 @@ import java.util.List;
 public interface ICatalogDao {
 
 
+
+
+
+
     List<MenuEntity> findAllByEnglish();
 
     List<Menu> findAllByChinese();

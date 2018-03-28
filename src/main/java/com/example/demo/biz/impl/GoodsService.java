@@ -2,10 +2,10 @@ package com.example.demo.biz.impl;
 
 import com.example.demo.biz.IGoodsService;
 import com.example.demo.dao.IGoodsDao;
-import com.example.demo.dao.IGoodRepository;
+import com.example.demo.dao.IGoodsRepository;
 import com.example.demo.entity.GoodEntity;
 import com.example.demo.entity.Goods;
-import com.example.demo.entity.Menu;
+import com.example.demo.entity.GoodsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class GoodsService implements IGoodsService {
     @Autowired
     IGoodsDao iGoodsDao;
     @Autowired
-    IGoodRepository iGoodRepository;
+    IGoodsRepository iGoodRepository;
 
     @Override
     public List<GoodEntity> selectBySecondId(Long second_id) {
@@ -40,6 +40,49 @@ public class GoodsService implements IGoodsService {
         List<Object[]> list=iGoodRepository.findGoodsChinese(menuId);
         return this.cast(list);
     }
+
+    @Override
+    public Goods findGoodsByIdEnglish(Long goodsId) {
+        Object[] obj=iGoodRepository.findGoodsByIdEnglish(goodsId);
+        Goods goods=new Goods();
+        if (obj!=null){
+            if (null != obj[0]) {
+                goods.setGoodsName(obj[0].toString());
+            }
+            if (null != obj[1]) {
+                goods.setGoodsInfo(obj[1].toString());
+            }
+            if (null != obj[2]) {
+                goods.setGoodsInfoDetail(obj[2].toString());
+            }
+            if (null != obj[3]) {
+                goods.setGoodsUrl(obj[3].toString());
+            }
+        }
+        return goods;
+    }
+
+    @Override
+    public Goods findGoodsByIdChinese(Long goodsId) {
+        Object[] obj=iGoodRepository.findGoodsByIdChinese(goodsId);
+        Goods goods=new Goods();
+        if (obj!=null){
+            if (null != obj[0]) {
+                goods.setGoodsName(obj[0].toString());
+            }
+            if (null != obj[1]) {
+                goods.setGoodsInfo(obj[1].toString());
+            }
+            if (null != obj[2]) {
+                goods.setGoodsInfoDetail(obj[2].toString());
+            }
+            if (null != obj[3]) {
+                goods.setGoodsUrl(obj[3].toString());
+            }
+        }
+        return goods;
+    }
+
     private List<Goods> cast(List<Object[]> list){
         List<Goods> good=new ArrayList<>();
         for (int i=0;i<list.size();i++) {

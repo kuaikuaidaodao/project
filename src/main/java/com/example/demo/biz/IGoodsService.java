@@ -1,6 +1,8 @@
 package com.example.demo.biz;
 
 import com.example.demo.entity.GoodEntity;
+import com.example.demo.entity.Goods;
+import com.example.demo.entity.GoodsEntity;
 import com.example.demo.entity.UserinfoEntity;
 
 import java.util.List;
@@ -17,4 +19,8 @@ public interface IGoodsService {
     List findGoodsEnglish(Long menuId);
     // 查询商品  中文
     List findGoodsChinese(Long menuId);
+    // 查询单个商品详情  英文
+    Goods findGoodsByIdEnglish(Long goodsId);
+    // 查询单个商品详情  中文
+    Goods findGoodsByIdChinese(Long goodsId);
 }

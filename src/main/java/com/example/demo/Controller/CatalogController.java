@@ -53,7 +53,6 @@ public class CatalogController {
     @RequestMapping("findAll")
     @ResponseBody
     public List findAll(Long parentId){
-
             return iCatalogRepository.findAllByParentId(parentId);
 
     }
@@ -74,28 +73,6 @@ public class CatalogController {
           iCatalogRepository.delete(Long.valueOf(id));
       }
   }
-//  /**
-//     二级菜单查询
-//   */
-//  @RequestMapping("menu_find_")
-//  @ResponseBody
-//  public List<SecondlevelEntity> secondlevel_find(Long parentId){
-//    return iCatalogService.findByFirstId(firstId);
-//  }
-//  /**parent
-//   * 二级目录增加修改
-//   */
-//  @RequestMapping("saveAndflushSecond")
-//  public void saveAndflushSecond(SecondlevelEntity secondlevelEntity){
-//    iCatalogService.saveAndflushSecond(secondlevelEntity);
-//  }
-//  /**
-//   * 二级目录删除
-//   */
-//  @RequestMapping("deleteSecond")
-//  public void deleteSecond(String  ids){
-//    iCatalogService.deleteSecond(ids);
-//  }
   /**
    *@Author:liyong
    *@Description: 文件上传

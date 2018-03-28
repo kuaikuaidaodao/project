@@ -22,14 +22,6 @@ public class CatalogDao implements ICatalogDao {
     private EntityManager entityManager;
 
     @Override
-    public List<SecondlevelEntity> findByFirstId(Long firstId) {
-        TypedQuery<SecondlevelEntity> query = this.entityManager.createQuery(" from  SecondlevelEntity u where u.firstId=:firstId  ",SecondlevelEntity.class);
-        query.setParameter("firstId",firstId);
-        List<SecondlevelEntity> list=query.getResultList();
-        return list;
-    }
-
-    @Override
     public List<MenuEntity> findAllByEnglish() {
         TypedQuery<MenuEntity> query = (TypedQuery<MenuEntity>) entityManager.createNativeQuery("select menu_id,menu_name_english from Menu where parent=0 order by short");
         List<MenuEntity> list=query.getResultList();

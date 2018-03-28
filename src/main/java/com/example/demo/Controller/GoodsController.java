@@ -1,8 +1,8 @@
 package com.example.demo.Controller;
 
 import com.example.demo.biz.IGoodsService;
-import com.example.demo.dao.IGoodRepository;
-import com.example.demo.entity.GoodEntity;
+import com.example.demo.dao.IGoodsRepository;
+import com.example.demo.entity.Goods;
 import com.example.demo.entity.GoodsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -25,7 +25,7 @@ public class GoodsController {
     @Autowired
     IGoodsService iGoodsService;
     @Autowired
-    IGoodRepository iGoodsRepository;
+    IGoodsRepository iGoodsRepository;
     /**
      * 查全部 中英文
      */
@@ -40,13 +40,23 @@ public class GoodsController {
         }
     }
     /**
-     * 查全部
+     * 通过菜单id查商品
     */
-    @RequestMapping("/findAll")
+    @RequestMapping("/findAllByMenuId")
     @ResponseBody
     public List findAllByMenuId(Long menuId){
 
             return iGoodsRepository.findAllByMenuId(menuId);
+
+    }
+    /**
+     * 全部商品
+     */
+    @RequestMapping("/findAll")
+    @ResponseBody
+    public List findAll(){
+
+        return iGoodsRepository.findAll();
 
     }
    /**
@@ -69,12 +79,35 @@ public class GoodsController {
         }
     }
     /**
-     * selectById
+     * selectById 中英文全部查询
      */
-    @RequestMapping("/selectById")
+    @RequestMapping("/selectByGoodsId")
     @ResponseBody
-    public GoodsEntity selectById(Long id){
-        GoodsEntity goodsEntity=iGoodsRepository.findOne(id);
+    public GoodsEntity selectByGoodsId(Long goodsId){
+        GoodsEntity goodsEntity=iGoodsRepository.findOne(goodsId);
+        return goodsEntity;
+
+    }
+    /**
+     * selectById 中英文分开查询
+     */
+    @RequestMapping("/selectByGoodsIdSinglon")
+    @ResponseBody
+    public Goods selectByGoodsIdSinglon(Long goodsId){
+        String local= this.local();
+        if (local.equals("en_US")){
+            return iGoodsService.findGoodsByIdEnglish(goodsId);
+        }else{
+            return iGoodsService.findGoodsByIdChinese(goodsId);
+        }
+    }
+    /**
+     * 搜索
+     */
+    @RequestMapping("/findByGoodsName")
+    @ResponseBody
+    public GoodsEntity findByGoodsName(String goodsName){
+        GoodsEntity goodsEntity=iGoodsRepository.findByGoodsName(goodsName);
         return goodsEntity;
 
     }

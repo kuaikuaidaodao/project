@@ -127,7 +127,7 @@ public class CompanyEntity {
 	}
 
 	@Basic
-	@Column(name="desc")
+	@Column(name="descr")
 	public String getDesc() {
 		return desc;
 	}
@@ -137,7 +137,7 @@ public class CompanyEntity {
 	}
 
 	@Basic
-	@Column(name="desc_en")
+	@Column(name="descr_en")
 	public String getDescEn() {
 		return descEn;
 	}

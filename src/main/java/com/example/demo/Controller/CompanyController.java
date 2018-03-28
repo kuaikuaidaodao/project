@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Locale;
 
@@ -28,9 +29,9 @@ public class CompanyController {
 	ICompanyRepository companyRepository;
 
 	// 添加和修改
-	@RequestMapping("/savaAndFlush")
+	@RequestMapping("/saveAndFlush")
 	@ResponseBody
-	public void savaAndFlush(CompanyEntity companyEntity) {
+	public void saveAndFlush(CompanyEntity companyEntity) {
 		companyRepository.saveAndFlush(companyEntity);
 	}
 

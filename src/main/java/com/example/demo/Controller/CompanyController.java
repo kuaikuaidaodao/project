@@ -8,12 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-/**
- * 
- * @author xwj
- * @date 2018年3月28日 下午1:35:06
- * @desc 公司详情
- */
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.biz.ICompanyService;
 import com.example.demo.dao.ICompanyRepository;

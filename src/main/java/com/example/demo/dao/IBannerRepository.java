@@ -15,6 +15,10 @@ import com.example.demo.entity.Banner;
  */
 public interface IBannerRepository extends JpaRepository<Banner, Long> {
 
+	/**
+	 * 查询banner图
+	 * @return
+	 */
 	@Query("select id,goodid,goodName,imgEnUrl,time from Banner")
 	List<Object[]> findAllByZh();
 

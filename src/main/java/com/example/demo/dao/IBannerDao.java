@@ -11,5 +11,9 @@ import com.example.demo.entity.BannerEn;
  */
 public interface IBannerDao {
 
+	/**
+	 * 查询所有英文版banner图
+	 * @return
+	 */
 	List<BannerEn> findAll();
 }

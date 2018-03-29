@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author li
  * @create 2018-03-20 15:54
@@ -21,64 +23,77 @@ import java.util.Properties;
  **/
 @Controller
 @RequestMapping("/userinfo")
-public class UserinfoController{
+public class UserinfoController {
 
-    @Autowired
-    IUserinfoService iUserinfoService;
-    @Autowired
-    IUserinfoRepository iUserinfoRepository;
-   /*
-     登陆
-    */
-   @RequestMapping("/login")
-   @ResponseBody
-    public int login(String userName,String password){
-       int i=1;
-       List<UserinfoEntity> userinfo=iUserinfoService.selectByNameAndPassword(userName,password);
-       if (userinfo.size()>0){
-          i=0;
-       }
-       return i;
+	@Autowired
+	IUserinfoService iUserinfoService;
+	@Autowired
+	IUserinfoRepository iUserinfoRepository;
 
-   }
-    /*
-     登陆
-    */
-    @RequestMapping("/find")
-    @ResponseBody
-    public List<UserinfoEntity> find(){
-        List<UserinfoEntity> userinfo=iUserinfoService.findAll();
-        return userinfo;
+	/*
+	 * 登陆
+	 */
+	@RequestMapping("/login")
+	@ResponseBody
+	public Object login(String userName, String password, HttpSession session) {
+		int i = 1;
+		Object userinfo = iUserinfoService.selectByNameAndPassword(userName, password);
+		if (userinfo != null && !"".equals(userinfo)) {
+			i = 0;
+			session.setAttribute("USER_LOGIN", userName);
+			return userinfo;
+		} else {
+			return i;
+		}
+	}
 
-    }
-   /*
-     增加 修改
-    */
-    @RequestMapping("/saveAndflush")
-    @ResponseBody
-    public String  saveAndflush(UserinfoEntity userinfoEntity){
-        String i="成功";
-        try {
-            iUserinfoService.saveAndflush(userinfoEntity);
-        }catch(Exception e){
-            i="失败";
-        }
-       return i;
-    }
-     /*
-     删除
-    */
-    @RequestMapping("/delete")
-    public void delete(String ids){
-        iUserinfoService.delete(ids);
-    }
-    /*
-    删除
-   */
-    @RequestMapping("/findOne")
-    @ResponseBody
-    public UserinfoEntity findOne(String ids){
-       return iUserinfoRepository.findOne(Long.valueOf(ids));
-    }
+	// 退出
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("USER_LOGIN");
+		return "退出成功";
+	}
+
+	/*
+	 * 登陆
+	 */
+	@RequestMapping("/find")
+	@ResponseBody
+	public List<UserinfoEntity> find() {
+		List<UserinfoEntity> userinfo = iUserinfoService.findAll();
+		return userinfo;
+
+	}
+
+	/*
+	 * 增加 修改
+	 */
+	@RequestMapping("/saveAndflush")
+	@ResponseBody
+	public String saveAndflush(UserinfoEntity userinfoEntity) {
+		String i = "成功";
+		try {
+			iUserinfoService.saveAndflush(userinfoEntity);
+		} catch (Exception e) {
+			i = "失败";
+		}
+		return i;
+	}
+
+	/*
+	 * 删除
+	 */
+	@RequestMapping("/delete")
+	public void delete(String ids) {
+		iUserinfoService.delete(ids);
+	}
+
+	/*
+	 * 删除
+	 */
+	@RequestMapping("/findOne")
+	@ResponseBody
+	public UserinfoEntity findOne(String ids) {
+		return iUserinfoRepository.findOne(Long.valueOf(ids));
+	}
 }
-

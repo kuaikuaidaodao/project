@@ -14,7 +14,7 @@ import java.util.List;
  **/
 public interface IUserinfoService {
 //   登陆
-    List<UserinfoEntity> selectByNameAndPassword(String userName, String password);
+    Object selectByNameAndPassword(String userName, String password);
 //增加 修改
     void saveAndflush(UserinfoEntity userinfoEntity);
 //    删除

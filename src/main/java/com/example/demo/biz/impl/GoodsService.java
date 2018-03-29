@@ -3,9 +3,7 @@ package com.example.demo.biz.impl;
 import com.example.demo.biz.IGoodsService;
 import com.example.demo.dao.IGoodsDao;
 import com.example.demo.dao.IGoodsRepository;
-import com.example.demo.entity.GoodEntity;
 import com.example.demo.entity.Goods;
-import com.example.demo.entity.GoodsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +22,7 @@ public class GoodsService implements IGoodsService {
     @Autowired
     IGoodsRepository iGoodRepository;
 
-    @Override
-    public List<GoodEntity> selectBySecondId(Long second_id) {
-        return iGoodsDao.selectBySecondId(second_id);
-    }
+
 
     @Override
     public List findGoodsEnglish(Long menuId) {

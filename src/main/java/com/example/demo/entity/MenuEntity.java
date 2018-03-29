@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * @author li
@@ -38,6 +39,12 @@ public class MenuEntity {
      */
     public MenuEntity() {
     }
+
+    public MenuEntity(Long menuId, String menuNameEnglish) {
+        this.menuId = menuId;
+        this.menuNameEnglish = menuNameEnglish;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GenericGenerator(name = "persistenceGenerator", strategy = "increment")
@@ -84,5 +91,23 @@ public class MenuEntity {
 
     public void setSort(int sort) {
         this.sort = sort;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuEntity that = (MenuEntity) o;
+        return sort == that.sort &&
+                Objects.equals(menuId, that.menuId) &&
+                Objects.equals(menuNameChinese, that.menuNameChinese) &&
+                Objects.equals(menuNameEnglish, that.menuNameEnglish) &&
+                Objects.equals(parentId, that.parentId);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(menuId, menuNameChinese, menuNameEnglish, parentId, sort);
     }
 }

@@ -14,7 +14,7 @@ public interface IGoodsRepository extends JpaRepository<GoodsEntity, Long> {
     List<Object[]> findGoodsChinese(Long menuId);
     @Query(" from GoodsEntity where menuId=?1 order by sort asc")
     List findAllByMenuId(Long menuId);
-    @Query(" from GoodsEntity  where goodsNameChinese  like '%'||?1||'%'")
+    @Query(" from GoodsEntity  where goodsNameChinese  like '%'||?1||'%' ")
     GoodsEntity findByGoodsName(String goodsName);
     @Query("select  goodsNameEnglish as goodsName,goodsInfoEnglish as goodsInfo,goodsInfoDetailEnglish as goodsInfoDetail,goodsUrlEnglish as goodsUrl from GoodsEntity where goodsId=?1 ")
     Object[] findGoodsByIdEnglish(Long goodsId);

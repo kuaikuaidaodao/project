@@ -1,7 +1,6 @@
 package com.example.demo.Controller;
 
 import com.example.demo.biz.ICatalogService;
-import com.example.demo.common.Common;
 import com.example.demo.dao.ICatalogRepository;
 import com.example.demo.entity.MenuEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * @author li
@@ -54,6 +51,31 @@ public class CatalogController {
     @ResponseBody
     public List findAll(Long parentId){
             return iCatalogRepository.findAllByParentId(parentId);
+
+    }
+    /**
+     * 商品级查
+     */
+    @RequestMapping("findParent")
+    @ResponseBody
+    public List findParent(Long menuId){
+        String[] str=new String[]{};
+        List list=new ArrayList();
+        Long parentId=null;
+        while(true){
+             Map map=new HashMap();
+            Object object=iCatalogRepository.findmenuName(menuId);
+            Object[] obj= (Object[]) object;
+            map.put("zh",obj[0].toString());
+            map.put("us",obj[1].toString());
+            list.add(map);
+            parentId=iCatalogRepository.findParent(menuId);
+            menuId=iCatalogRepository.findParent(menuId);
+            if (parentId==0L){
+                break;
+            }
+        }
+        return list;
 
     }
   /**

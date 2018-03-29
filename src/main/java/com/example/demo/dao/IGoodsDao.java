@@ -1,8 +1,5 @@
 package com.example.demo.dao;
 
-import com.example.demo.entity.GoodEntity;
-import com.example.demo.entity.UserinfoEntity;
-
 import java.util.List;
 
 /**
@@ -11,5 +8,5 @@ import java.util.List;
  * @desc 用户
  **/
 public interface IGoodsDao {
-    List<GoodEntity> selectBySecondId(Long second_id);
+
 }

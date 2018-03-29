@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Locale;
 
@@ -34,6 +35,7 @@ public class GoodsController {
     public List goods_find(Long menuId){
         String local= this.local();
         if (local.equals("en_US")){
+            List list=iGoodsService.findGoodsEnglish(menuId);
             return iGoodsService.findGoodsEnglish(menuId);
         }else{
             return iGoodsService.findGoodsChinese(menuId);
@@ -79,7 +81,7 @@ public class GoodsController {
         }
     }
     /**
-     * selectById 中英文全部查询
+     * selectByGoodsId 中英文全部查询
      */
     @RequestMapping("/selectByGoodsId")
     @ResponseBody
@@ -89,7 +91,7 @@ public class GoodsController {
 
     }
     /**
-     * selectById 中英文分开查询
+     * selectByGoodsIdSinglon 中英文分开查询
      */
     @RequestMapping("/selectByGoodsIdSinglon")
     @ResponseBody
@@ -107,6 +109,11 @@ public class GoodsController {
     @RequestMapping("/findByGoodsName")
     @ResponseBody
     public GoodsEntity findByGoodsName(String goodsName){
+        try {
+            goodsName=new String(goodsName.getBytes("ISO-8859-1"),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         GoodsEntity goodsEntity=iGoodsRepository.findByGoodsName(goodsName);
         return goodsEntity;
 

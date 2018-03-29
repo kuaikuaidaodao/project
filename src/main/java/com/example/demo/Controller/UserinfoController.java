@@ -2,6 +2,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.biz.IUserinfoService;
+import com.example.demo.common.Des;
 import com.example.demo.dao.IUserinfoRepository;
 import com.example.demo.entity.UserinfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Properties;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -37,6 +43,7 @@ public class UserinfoController {
 	@ResponseBody
 	public Object login(String userName, String password, HttpSession session) {
 		int i = 1;
+		password = Des.encryptBasedDes(password);
 		Object userinfo = iUserinfoService.selectByNameAndPassword(userName, password);
 		if (userinfo != null && !"".equals(userinfo)) {
 			i = 0;
@@ -73,6 +80,7 @@ public class UserinfoController {
 	public String saveAndflush(UserinfoEntity userinfoEntity) {
 		String i = "成功";
 		try {
+			userinfoEntity.setPassword(Des.encryptBasedDes(userinfoEntity.getPassword()));
 			iUserinfoService.saveAndflush(userinfoEntity);
 		} catch (Exception e) {
 			i = "失败";
@@ -96,4 +104,6 @@ public class UserinfoController {
 	public UserinfoEntity findOne(String ids) {
 		return iUserinfoRepository.findOne(Long.valueOf(ids));
 	}
+	
+	
 }

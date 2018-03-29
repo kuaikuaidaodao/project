@@ -35,6 +35,7 @@ public class FileController {
 	public void saveAndFlush(FileEntity fileEntity) {
 		Date d = new Date();
 		fileEntity.setTime(d);
+		System.out.println(fileEntity);
 		fileRepository.saveAndFlush(fileEntity);
 	}
 
@@ -63,13 +64,13 @@ public class FileController {
 	// 根据文件id查询   
 	@RequestMapping("/findOne") 
 	@ResponseBody
-	public List findOne(Long id) {
+	public Object findOne(Long id) {
 		Locale locale = LocaleContextHolder.getLocale();
 		if (locale.toString() != null && locale.toString().equals("en_US")) {
 			//System.out.println("en_US************************");
 			return fileService.findById(id);
 		} else {
-			return  (List) fileRepository.findOne(id);
+			return fileRepository.findOne(id); 
 		}
 	}
 }

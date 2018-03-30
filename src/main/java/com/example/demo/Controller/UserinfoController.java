@@ -6,6 +6,7 @@ import com.example.demo.common.Des;
 import com.example.demo.dao.IUserinfoRepository;
 import com.example.demo.entity.UserinfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +21,7 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -41,13 +43,14 @@ public class UserinfoController {
 	 */
 	@RequestMapping("/login")
 	@ResponseBody
-	public Object login(String userName, String password, HttpSession session) {
+	public Object login(String userName, String password,HttpServletRequest req, HttpSession session) {
 		int i = 1;
 		password = Des.encryptBasedDes(password);
 		Object userinfo = iUserinfoService.selectByNameAndPassword(userName, password);
 		if (userinfo != null && !"".equals(userinfo)) {
 			i = 0;
 			session.setAttribute("USER_LOGIN", userName);
+			System.out.println(req.getSession().getAttribute("USER_LOGIN"));
 			return userinfo;
 		} else {
 			return i;

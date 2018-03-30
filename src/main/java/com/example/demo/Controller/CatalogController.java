@@ -5,6 +5,9 @@ import com.example.demo.dao.ICatalogRepository;
 import com.example.demo.entity.MenuEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +52,8 @@ public class CatalogController {
      */
     @RequestMapping("findAll")
     @ResponseBody
-    public List findAll(Long parentId){
+    public List findAll( Long parentId){
+//        Pageable pageable = new PageRequest(page, pagesize);
             return iCatalogRepository.findAllByParentId(parentId);
 
     }
@@ -59,12 +63,12 @@ public class CatalogController {
     @RequestMapping("findParent")
     @ResponseBody
     public List findParent(Long menuId){
-        String[] str=new String[]{};
         List list=new ArrayList();
         Long parentId=null;
         while(true){
              Map map=new HashMap();
             Object object=iCatalogRepository.findmenuName(menuId);
+            map.put("menu_id",menuId);
             Object[] obj= (Object[]) object;
             map.put("zh",obj[0].toString());
             map.put("us",obj[1].toString());

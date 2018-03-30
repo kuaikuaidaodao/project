@@ -61,10 +61,10 @@ public class CatalogController {
     @RequestMapping("findByMenuId")
     @ResponseBody
     public MenuEntity findByMenuId( Long menuId){
-        return iCatalogRepository.getOne(menuId);
+        return iCatalogRepository.findOne(menuId);
     }
     /**
-     * 商品级查
+     * 菜单级查
      */
     @RequestMapping("findParent")
     @ResponseBody

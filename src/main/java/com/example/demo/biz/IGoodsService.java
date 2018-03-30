@@ -19,4 +19,6 @@ public interface IGoodsService {
     Goods findGoodsByIdEnglish(Long goodsId);
     // 查询单个商品详情  中文
     Goods findGoodsByIdChinese(Long goodsId);
+
+    List findByCategoryId(String s);
 }

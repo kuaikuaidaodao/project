@@ -1,7 +1,9 @@
 package com.example.demo.Controller;
 
 import com.example.demo.biz.IGoodsService;
+import com.example.demo.dao.ICategoryRepository;
 import com.example.demo.dao.IGoodsRepository;
+import com.example.demo.entity.CategoryEntity;
 import com.example.demo.entity.Goods;
 import com.example.demo.entity.GoodsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * @author li
@@ -27,6 +28,9 @@ public class GoodsController {
     IGoodsService iGoodsService;
     @Autowired
     IGoodsRepository iGoodsRepository;
+    @Autowired
+    ICategoryRepository iCategoryRepository;
+    Set childMenu=new HashSet();
     /**
      * 查全部 中英文
      */
@@ -42,14 +46,19 @@ public class GoodsController {
         }
     }
     /**
-     * 通过菜单id查商品
+     * 通过类别id查商品
     */
-    @RequestMapping("/findAllByMenuId")
+    @RequestMapping("/findByCategoryId")
     @ResponseBody
-    public List findAllByMenuId(Long menuId){
-
-            return iGoodsRepository.findAllByMenuId(menuId);
-
+    public List findByCategoryId(Long categoryId){
+            Set list=treeMenuList(iCategoryRepository.findAll(),categoryId);
+            StringBuffer sb=new StringBuffer("(");
+            for (Object li:list){
+                sb.append(li.toString()+" ,");
+            }
+            sb.append(categoryId);
+            sb.append(" )");
+            return iGoodsService.findByCategoryId(sb.toString());
     }
     /**
      * 全部商品
@@ -130,5 +139,23 @@ public class GoodsController {
             return "zh_CN";
         }
 
+    }
+
+    /**
+     *
+     * @param menuList
+     * @param CategoryId  查询子节点
+     * @return
+     */
+    public  Set treeMenuList(List<CategoryEntity> menuList, Long CategoryId){
+        for(CategoryEntity mu: menuList){
+            //遍历出父id等于参数的id，add进子节点集合
+            if(mu.getParentId()==CategoryId){
+                //递归遍历下一级
+                treeMenuList(menuList,mu.getCategoryId());
+                childMenu.add(mu.getCategoryId());
+            }
+        }
+        return childMenu;
     }
 }

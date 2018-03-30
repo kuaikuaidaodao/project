@@ -53,9 +53,15 @@ public class CatalogController {
     @RequestMapping("findAll")
     @ResponseBody
     public List findAll( Long parentId){
-//        Pageable pageable = new PageRequest(page, pagesize);
             return iCatalogRepository.findAllByParentId(parentId);
-
+    }
+    /**
+     * 菜单查询id
+     */
+    @RequestMapping("findByMenuId")
+    @ResponseBody
+    public MenuEntity findByMenuId( Long menuId){
+        return iCatalogRepository.getOne(menuId);
     }
     /**
      * 商品级查
@@ -74,7 +80,7 @@ public class CatalogController {
             map.put("us",obj[1].toString());
             list.add(map);
             parentId=iCatalogRepository.findParent(menuId);
-            menuId=iCatalogRepository.findParent(menuId);
+            menuId=parentId;
             if (parentId==0L){
                 break;
             }

@@ -1,9 +1,6 @@
 package com.example.demo.biz;
 
-import com.example.demo.dao.ICatalogRepository;
-import com.example.demo.entity.FirstlevelEntity;
 import com.example.demo.entity.UserinfoEntity;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 

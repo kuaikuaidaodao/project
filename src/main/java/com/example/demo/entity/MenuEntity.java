@@ -30,6 +30,10 @@ public class MenuEntity {
      */
     private  Long parentId;
     /**
+     * 父id
+     */
+    private  String url;
+    /**
      * 排序
      */
     private  int sort;
@@ -40,10 +44,6 @@ public class MenuEntity {
     public MenuEntity() {
     }
 
-    public MenuEntity(Long menuId, String menuNameEnglish) {
-        this.menuId = menuId;
-        this.menuNameEnglish = menuNameEnglish;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,6 +83,7 @@ public class MenuEntity {
     public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
+
     @Basic
     @Column(name = "sort")
     public int getSort() {
@@ -92,22 +93,13 @@ public class MenuEntity {
     public void setSort(int sort) {
         this.sort = sort;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MenuEntity that = (MenuEntity) o;
-        return sort == that.sort &&
-                Objects.equals(menuId, that.menuId) &&
-                Objects.equals(menuNameChinese, that.menuNameChinese) &&
-                Objects.equals(menuNameEnglish, that.menuNameEnglish) &&
-                Objects.equals(parentId, that.parentId);
+    @Basic
+    @Column(name = "url")
+    public String getUrl() {
+        return url;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(menuId, menuNameChinese, menuNameEnglish, parentId, sort);
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

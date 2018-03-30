@@ -9,4 +9,7 @@ import java.util.List;
  **/
 public interface IGoodsDao {
 
+    List<Object[]> findGoodsEnglish(Long menuId);
+
+    List findByCategoryId(String s);
 }

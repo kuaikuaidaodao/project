@@ -51,7 +51,7 @@ public class GoodsEntity {
     /**
      * 商品 父id
      */
-    private  Long  menuId;
+    private  Long  categoryId;
     /**
      * 商品排序
      */
@@ -142,13 +142,13 @@ public class GoodsEntity {
         this.goodsUrlEnglish = goodsUrlEnglish;
     }
     @Basic
-    @Column(name = "menu_id")
-    public Long getMenuId() {
-        return menuId;
+    @Column(name = "category_Id")
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
     @Basic
     @Column(name = "sort")

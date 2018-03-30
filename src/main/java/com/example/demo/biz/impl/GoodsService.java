@@ -26,7 +26,7 @@ public class GoodsService implements IGoodsService {
 
     @Override
     public List findGoodsEnglish(Long menuId) {
-        List<Object[]> list=iGoodRepository.findGoodsEnglish(menuId);
+        List<Object[]> list=iGoodsDao.findGoodsEnglish(menuId);
         return this.cast(list);
     }
 
@@ -76,6 +76,11 @@ public class GoodsService implements IGoodsService {
             }
         }
         return goods;
+    }
+
+    @Override
+    public List findByCategoryId(String s) {
+        return iGoodsDao.findByCategoryId(s);
     }
 
     private List<Goods> cast(List<Object[]> list){

@@ -17,7 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @desc 资历证书
  */
 @Entity
-@Table(name="cretificate")
+@Table(name="certificate")
 public class CertificateEntity {
 
 	/**

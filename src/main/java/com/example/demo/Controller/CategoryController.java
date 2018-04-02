@@ -23,7 +23,7 @@ import java.util.*;
 /**
  * @author li
  * @create 2018-03-20 15:10
- * @desc 目录查询
+ * @desc 类目查询
  **/
 @Controller
 @RequestMapping("category")

@@ -64,7 +64,7 @@ public class CatalogController {
         return iCatalogRepository.findOne(menuId);
     }
     /**
-     * 商品级查
+     * 菜单级查
      */
     @RequestMapping("findParent")
     @ResponseBody

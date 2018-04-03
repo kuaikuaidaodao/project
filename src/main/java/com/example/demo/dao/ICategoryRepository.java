@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface ICategoryRepository extends JpaRepository<CategoryEntity, Long> {
 //    类目查询  中文
-    @Query("select  categoryId, categoryNameChinese as categoryName from CategoryEntity where parentId=?1 order by sort asc")
+    @Query("select  categoryId, categoryNameChinese as categoryName,url from CategoryEntity where parentId=?1 order by sort asc")
     List<Object[]> findAllByChinese(Long parentId);
 //    类目查询 英文
-    @Query("select  categoryId, categoryNameEnglish as categoryName from CategoryEntity where parentId=?1 order by sort asc")
+    @Query("select  categoryId, categoryNameEnglish as categoryName,url from CategoryEntity where parentId=?1 order by sort asc")
     List<Object[]> findAllByEnglish(Long parentId);
 //    类目查询  父级
     @Query(" from CategoryEntity where parentId=?1 order by sort asc")

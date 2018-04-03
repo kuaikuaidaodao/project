@@ -1,7 +1,5 @@
 package com.example.demo.entity;
 
-import java.util.Objects;
-
 /**
  * @author li
  * @create 2018-03-27 9:42
@@ -13,9 +11,13 @@ public class Category {
      */
     private  Long categoryId;
     /**
-     * 菜单名——english
+     * 类名——english
      */
     private  String categoryName;
+    /**
+     * url
+     */
+    private  String url;
 
     public Category() {
     }
@@ -36,18 +38,13 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return Objects.equals(categoryId, category.categoryId) &&
-                Objects.equals(categoryName, category.categoryName);
+    public String getUrl() {
+        return url;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(categoryId, categoryName);
+    public void setUrl(String url) {
+        this.url = url;
     }
+
+
 }

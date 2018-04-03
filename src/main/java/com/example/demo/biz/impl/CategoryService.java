@@ -59,6 +59,9 @@ public class CategoryService implements ICategoryService {
             if (null != obj[1]) {
                 category.setCategoryName(obj[1].toString());
             }
+            if (null != obj[2]) {
+                category.setUrl(obj[2].toString());
+            }
             menu.add(category);
         }
         return menu;
@@ -72,7 +75,9 @@ public class CategoryService implements ICategoryService {
             if (null != obj[1]) {
                 category.setCategoryName(obj[1].toString());
             }
-
+        if (null != obj[2]) {
+            category.setUrl(obj[2].toString());
+        }
         return category;
     }
 }

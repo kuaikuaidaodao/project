@@ -44,6 +44,9 @@ public class CatalogService implements ICatalogService {
             if (null != obj[1]) {
                 menus.setMenuName(obj[1].toString());
             }
+            if (null != obj[2]) {
+                menus.setUrl(obj[2].toString());
+            }
             menu.add(menus);
         }
         return menu;

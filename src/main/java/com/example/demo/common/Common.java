@@ -15,6 +15,7 @@ import java.util.Random;
  **/
 public class Common {
     public static void main(String args[]) {
+
         System.out.println(X);
         Integer a=1000;
         int b=1000;

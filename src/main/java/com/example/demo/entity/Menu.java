@@ -17,6 +17,12 @@ public class Menu {
      */
     private  String menuName;
 
+    /**
+     * url
+     * @return
+     */
+ private  String url;
+
     public Long getMenuId() {
         return menuId;
     }
@@ -31,5 +37,13 @@ public class Menu {
 
     public void setMenuName(String menuName) {
         this.menuName = menuName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

@@ -15,25 +15,15 @@ import java.util.Random;
  **/
 public class Common {
     public static void main(String args[]) {
-        System.out.println(5%6);
-        int i, m, s;
-        for (m = 2; m < 1000; m++) {
-            s = 0;
-            for (i = 1; i < m; i++){
-                if (m%i == 0) {
-                    s += i;
-                }
-            if (s == m) {
-                System.out.print(m+"=");
-                for (i = 1; i < m; i++) {
-                    if (m % i == 0) {
-                        System.out.print(i + "+");
-                    }
-                }
-                System.out.println("");
-                }
-                }
-        }
+        System.out.println(X);
+        Integer a=1000;
+        int b=1000;
+        System.out.println(a==1000);
+        System.out.println(sca(5)+"-----");
+    }
+    static final long X=sca(10);
+    static long sca(int value){
+        return X*value;
     }
     public static String chatName(){
         String a = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

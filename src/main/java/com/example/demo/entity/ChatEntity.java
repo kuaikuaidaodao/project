@@ -94,7 +94,7 @@ public class ChatEntity {
         this.chatDate = chatDate;
     }
     @Basic
-    @Column(name = "sessionId")
+    @Column(name = "session_Id")
 
     public String getSessionId() {
         return sessionId;
@@ -104,22 +104,4 @@ public class ChatEntity {
         this.sessionId = sessionId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ChatEntity that = (ChatEntity) o;
-        return Objects.equals(chatId, that.chatId) &&
-                Objects.equals(chatName, that.chatName) &&
-                Objects.equals(chatRole, that.chatRole) &&
-                Objects.equals(chatText, that.chatText) &&
-                Objects.equals(chatDate, that.chatDate) &&
-                Objects.equals(sessionId, that.sessionId);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(chatId, chatName, chatRole, chatText, chatDate, sessionId);
-    }
 }

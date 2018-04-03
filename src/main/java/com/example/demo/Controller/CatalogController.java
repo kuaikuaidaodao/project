@@ -48,7 +48,7 @@ public class CatalogController {
 
     }
     /**
-     * 菜单查询
+     * 菜单查询 通过父id 可查询子级菜单
      */
     @RequestMapping("findAll")
     @ResponseBody
@@ -56,7 +56,7 @@ public class CatalogController {
             return iCatalogRepository.findAllByParentId(parentId);
     }
     /**
-     * 菜单查询id
+     * 通过菜单id  查询菜单详情
      */
     @RequestMapping("findByMenuId")
     @ResponseBody
@@ -64,7 +64,7 @@ public class CatalogController {
         return iCatalogRepository.findOne(menuId);
     }
     /**
-     * 菜单级查
+     * 菜单  级查
      */
     @RequestMapping("findParent")
     @ResponseBody

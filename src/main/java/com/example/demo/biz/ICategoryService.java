@@ -23,8 +23,12 @@ public interface ICategoryService {
 // void saveAndflushSecond(SecondlevelEntity secondlevelEntity);
 //    // delete 二级目录
 //    void deleteSecond(String ids);
-//  查询一级菜单 english
+  //  查询类目下 所有子类目 english
     List<Category> findAllByEnglish(Long parentId);
-    //  查询一级菜单 chinese
+    //  查询类目下  所有子类目 chinese
     List<Category> findAllByChinese(Long parentId);
+    //  通过id查询单个类目 english
+    Category findOneByEnglish(Long categoryId);
+    //  通过id查询单个类目 chinese
+    Category findOneByChinese(Long categoryId);
 }

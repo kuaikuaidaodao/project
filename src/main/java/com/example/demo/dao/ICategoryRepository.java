@@ -26,12 +26,13 @@ public interface ICategoryRepository extends JpaRepository<CategoryEntity, Long>
     @Query(" select categoryNameChinese,categoryNameEnglish from CategoryEntity where categoryId=?1 ")
     Object findcategoryName(Long categoryId);
     //    单个类目  英文
-    @Query(" select  categoryId,categoryNameChinese as categoryName from CategoryEntity where categoryId=?1 ")
+    @Query(" select  categoryId,categoryNameChinese as categoryName,url from CategoryEntity where categoryId=?1 ")
     Object findOneByChinese(Long categoryId);
 //    单个类目  英文
-    @Query(" select  categoryId,categoryNameEnglish as categoryName from CategoryEntity where categoryId=?1 ")
+    @Query(" select  categoryId,categoryNameEnglish as categoryName,url from CategoryEntity where categoryId=?1 ")
     Object findOneByEnglish(Long categoryId);
 
     @Query("  from CategoryEntity where parentId=?1 order by sort  asc")
     List categoryfindAll(Long parentId);
+
 }

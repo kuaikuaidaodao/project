@@ -78,6 +78,7 @@ public class CatalogController {
             Object[] obj= (Object[]) object;
             map.put("zh",obj[0].toString());
             map.put("us",obj[1].toString());
+            map.put("url",obj[2].toString());
             list.add(map);
             parentId=iCatalogRepository.findParent(menuId);
             menuId=parentId;

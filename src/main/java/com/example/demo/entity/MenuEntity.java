@@ -30,7 +30,7 @@ public class MenuEntity {
      */
     private  Long parentId;
     /**
-     * 父id
+     * url
      */
     private  String url;
     /**

@@ -33,7 +33,10 @@ public class CategoryEntity {
      * 排序
      */
     private  int sort;
-
+    /**
+     * url
+     */
+    private  String url;
     /**
      * 无参构造方法
      */
@@ -89,22 +92,13 @@ public class CategoryEntity {
     public void setSort(int sort) {
         this.sort = sort;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CategoryEntity that = (CategoryEntity) o;
-        return sort == that.sort &&
-                Objects.equals(categoryId, that.categoryId) &&
-                Objects.equals(categoryNameChinese, that.categoryNameChinese) &&
-                Objects.equals(categoryNameEnglish, that.categoryNameEnglish) &&
-                Objects.equals(parentId, that.parentId);
+    @Basic
+    @Column(name = "url")
+    public String getUrl() {
+        return url;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(categoryId, categoryNameChinese, categoryNameEnglish, parentId, sort);
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

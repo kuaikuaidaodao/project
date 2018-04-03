@@ -45,8 +45,9 @@ public class BannerDao implements IBannerDao{
 			if (obj[3] != null) {
 				bannerEn.setImgurl(obj[3].toString());
 			}
-			bannerEn.setTime(new Date());
-			
+			if (obj[4] != null) {
+				bannerEn.setTime(obj[4].toString());
+			}
 			bannerEns.add(bannerEn);
 		}
 		return bannerEns;

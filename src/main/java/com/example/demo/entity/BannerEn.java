@@ -27,7 +27,7 @@ public class BannerEn {
 	/**
 	 * 添加时间
 	 */
-	private Date time;
+	private String time;
 	
 	/**
 	 * 英文图片
@@ -58,11 +58,11 @@ public class BannerEn {
 		this.goodName = goodName;
 	}
 
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 

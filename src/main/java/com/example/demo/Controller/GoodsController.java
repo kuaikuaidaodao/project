@@ -36,13 +36,12 @@ public class GoodsController {
      */
     @RequestMapping("/goods_find")
     @ResponseBody
-    public List goods_find(Long menuId){
+    public List goods_find(Long categoryId){
         String local= this.local();
         if (local.equals("en_US")){
-            List list=iGoodsService.findGoodsEnglish(menuId);
-            return iGoodsService.findGoodsEnglish(menuId);
+            return iGoodsService.findGoodsEnglish(categoryId);
         }else{
-            return iGoodsService.findGoodsChinese(menuId);
+            return iGoodsService.findGoodsChinese(categoryId);
         }
     }
     /**

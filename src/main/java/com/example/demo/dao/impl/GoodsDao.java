@@ -1,6 +1,7 @@
 package com.example.demo.dao.impl;
 
 import com.example.demo.dao.ICatalogRepository;
+import com.example.demo.dao.ICategoryRepository;
 import com.example.demo.dao.IGoodsDao;
 import com.example.demo.entity.GoodsEntity;
 import com.example.demo.entity.MenuEntity;
@@ -24,7 +25,7 @@ public class GoodsDao implements IGoodsDao {
     @PersistenceContext
     private EntityManager entityManager;
     @Autowired
-    ICatalogRepository iCatalogRepository;
+    ICategoryRepository iCategoryRepository;
 
     @Override
     public List<Object[]> findGoodsEnglish(Long menuId) {
@@ -32,7 +33,7 @@ public class GoodsDao implements IGoodsDao {
 //        sb.append("select  goodsId, goodsNameChinese as goodsName,goodsInfoChinese as goodsInfo,goodsInfoDetailChinese as goodsInfoDetail,goodsUrlChinese as goodsUrl from GoodsEntity where menuId=( ");
 //        sb.append(menuId+",");
         while (true){
-            List parentId=iCatalogRepository.findmenuId(menuId);
+            List parentId=iCategoryRepository.findCategoryId(menuId);
             if (parentId!=null){
                 for (Object list: parentId){
                     System.out.println(list.toString());
@@ -41,10 +42,6 @@ public class GoodsDao implements IGoodsDao {
                 break;
             }
         }
-//        sb.append("order by sort asc");
-
-//        Query query = this.entityManager.createQuery("  from  UserinfoEntity u where u.password=:password and u.userName=:userName ");
-//        List<UserinfoEntity>  list =query.getResultList();
         return null;
     }
 

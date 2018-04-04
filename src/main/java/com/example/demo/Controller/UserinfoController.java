@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.biz.IUserinfoService;
 import com.example.demo.common.Des;
+import com.example.demo.common.Message;
 import com.example.demo.dao.IUserinfoRepository;
 import com.example.demo.entity.UserinfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class UserinfoController {
 	 */
 	@RequestMapping("/login")
 	@ResponseBody
-	public Object login(String userName, String password,HttpServletRequest req, HttpSession session) {
+	public Object login(String userName, String password, HttpServletRequest req, HttpSession session) {
 		int i = 1;
 		password = Des.encryptBasedDes(password);
 		Object userinfo = iUserinfoService.selectByNameAndPassword(userName, password);
@@ -64,8 +65,8 @@ public class UserinfoController {
 		return "退出成功";
 	}
 
-	/*
-	 * 登陆
+	/**
+	 * 用户信息 全部
 	 */
 	@RequestMapping("/find")
 	@ResponseBody
@@ -107,6 +108,5 @@ public class UserinfoController {
 	public UserinfoEntity findOne(String ids) {
 		return iUserinfoRepository.findOne(Long.valueOf(ids));
 	}
-	
-	
+
 }

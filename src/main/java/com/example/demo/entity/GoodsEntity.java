@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * @author li
@@ -158,5 +159,46 @@ public class GoodsEntity {
 
     public void setSort(Long sort) {
         this.sort = sort;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GoodsEntity that = (GoodsEntity) o;
+        return Objects.equals(goodsId, that.goodsId) &&
+                Objects.equals(goodsNameChinese, that.goodsNameChinese) &&
+                Objects.equals(goodsNameEnglish, that.goodsNameEnglish) &&
+                Objects.equals(goodsInfoChinese, that.goodsInfoChinese) &&
+                Objects.equals(goodsInfoEnglish, that.goodsInfoEnglish) &&
+                Objects.equals(goodsInfoDetailChinese, that.goodsInfoDetailChinese) &&
+                Objects.equals(goodsInfoDetailEnglish, that.goodsInfoDetailEnglish) &&
+                Objects.equals(goodsUrlChinese, that.goodsUrlChinese) &&
+                Objects.equals(goodsUrlEnglish, that.goodsUrlEnglish) &&
+                Objects.equals(categoryId, that.categoryId) &&
+                Objects.equals(sort, that.sort);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(goodsId, goodsNameChinese, goodsNameEnglish, goodsInfoChinese, goodsInfoEnglish, goodsInfoDetailChinese, goodsInfoDetailEnglish, goodsUrlChinese, goodsUrlEnglish, categoryId, sort);
+    }
+
+    @Override
+    public String toString() {
+        return "GoodsEntity{" +
+                "goodsId=" + goodsId +
+                ", goodsNameChinese='" + goodsNameChinese + '\'' +
+                ", goodsNameEnglish='" + goodsNameEnglish + '\'' +
+                ", goodsInfoChinese='" + goodsInfoChinese + '\'' +
+                ", goodsInfoEnglish='" + goodsInfoEnglish + '\'' +
+                ", goodsInfoDetailChinese='" + goodsInfoDetailChinese + '\'' +
+                ", goodsInfoDetailEnglish='" + goodsInfoDetailEnglish + '\'' +
+                ", goodsUrlChinese='" + goodsUrlChinese + '\'' +
+                ", goodsUrlEnglish='" + goodsUrlEnglish + '\'' +
+                ", categoryId=" + categoryId +
+                ", sort=" + sort +
+                '}';
     }
 }

@@ -35,4 +35,6 @@ public interface ICategoryRepository extends JpaRepository<CategoryEntity, Long>
     @Query("  from CategoryEntity where parentId=?1 order by sort  asc")
     List categoryfindAll(Long parentId);
 
+    @Query(" select categoryId from CategoryEntity where parentId=?1 ")
+    List findCategoryId(Long menuId);
 }

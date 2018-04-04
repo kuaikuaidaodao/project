@@ -17,7 +17,6 @@ public interface ICatalogRepository extends JpaRepository<MenuEntity, Long> {
     Long findParent(Long menuId);
     @Query(" select menuNameChinese,menuNameEnglish ,url from MenuEntity where menuId=?1 ")
     Object findmenuName(Long menuId);
-    @Query(" select menuId from MenuEntity where parentId=?1 ")
-    List findmenuId(Long menuId);
+
 
 }

@@ -2,6 +2,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.biz.IUserinfoService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.IUserinfoRepository;
 import com.example.demo.entity.UserinfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +37,18 @@ public class UserinfoController {
 	@RequestMapping("/login")
 	@ResponseBody
 	public Object login(String userName, String password, HttpSession session) {
-		int i = 1;
-		Object userinfo = iUserinfoService.selectByNameAndPassword(userName, password);
-		if (userinfo != null && !"".equals(userinfo)) {
-			i = 0;
-			session.setAttribute("USER_LOGIN", userName);
-			return userinfo;
-		} else {
-			return i;
+		if ("".equals(userName)||null==userName){
+			return Message.usercount;
+		} else if ("".equals(userName)||null==userName) {
+			return Message.userword;
+		}else {
+			Object userinfo = iUserinfoService.selectByNameAndPassword(userName, password);
+			if (userinfo != null && !"".equals(userinfo)) {
+				session.setAttribute("USER_LOGIN", userName);
+				return userinfo;
+			} else {
+				return Message.LoginFaile;
+			}
 		}
 	}
 
@@ -54,8 +59,8 @@ public class UserinfoController {
 		return "退出成功";
 	}
 
-	/*
-	 * 登陆
+	/**
+	 * 用户信息  全部
 	 */
 	@RequestMapping("/find")
 	@ResponseBody

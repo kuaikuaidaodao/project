@@ -25,14 +25,14 @@ public class GoodsService implements IGoodsService {
 
 
     @Override
-    public List findGoodsEnglish(Long menuId) {
-        List<Object[]> list=iGoodsDao.findGoodsEnglish(menuId);
+    public List findGoodsEnglish(Long categoryId) {
+        List<Object[]> list=iGoodRepository.findGoodsEnglish(categoryId);
         return this.cast(list);
     }
 
     @Override
-    public List findGoodsChinese(Long menuId) {
-        List<Object[]> list=iGoodRepository.findGoodsChinese(menuId);
+    public List findGoodsChinese(Long categoryId) {
+        List<Object[]> list=iGoodRepository.findGoodsChinese(categoryId);
         return this.cast(list);
     }
 

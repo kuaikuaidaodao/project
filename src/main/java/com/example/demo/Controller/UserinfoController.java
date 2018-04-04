@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.FileReader;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.crypto.Cipher;
@@ -44,18 +46,30 @@ public class UserinfoController {
 	 */
 	@RequestMapping("/login")
 	@ResponseBody
-	public Object login(String userName, String password, HttpServletRequest req, HttpSession session) {
-		int i = 1;
-		password = Des.encryptBasedDes(password);
-		Object userinfo = iUserinfoService.selectByNameAndPassword(userName, password);
-		if (userinfo != null && !"".equals(userinfo)) {
-			i = 0;
-			session.setAttribute("USER_LOGIN", userName);
-			System.out.println(req.getSession().getAttribute("USER_LOGIN"));
-			return userinfo;
-		} else {
-			return i;
-		}
+	public Object login(String userName, String password) {
+        Map map=new HashMap();
+	    if (null==userName||"".equals(userName)){
+	        map.put("status","error");
+	        map.put("message",Message.usercount);
+	        return  map;
+        }else if (null==password||"".equals(password)){
+            map.put("status","error");
+            map.put("message",Message.userword);
+            return  map;
+        }else{
+            password = Des.encryptBasedDes(password);
+            List<UserinfoEntity> userinfo = iUserinfoService.selectByNameAndPassword(userName, password);
+            if (userinfo.size()>0) {
+                map.put("status","success");
+                map.put("message",userinfo);
+                return  map;
+            } else {
+                map.put("status","error");
+                map.put("message",Message.LoginFaile);
+                return map;
+            }
+        }
+
 	}
 
 	// 退出

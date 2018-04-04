@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.biz.ICertificateService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.ICertificateRepository;
 import com.example.demo.entity.CertificateEntity;
 
@@ -29,10 +30,16 @@ public class CertificateController {
 	private ICertificateService certificateService;
 	
 	//添加和删除
-	@RequestMapping("/savaAndFlush")
+	@RequestMapping("/saveAndFlush")
 	@ResponseBody
-	public void savaAndFlush(CertificateEntity certificate) {
-		certificateRepository.saveAndFlush(certificate);
+	public String savaAndFlush(CertificateEntity certificate) {
+		System.out.println(certificate.getId()+"**"+certificate.getContext()+"**"+certificate.getContextEn()+"**"+certificate.getImageUrls());
+		if (certificate.getContext()==null || "".equals(certificate.getContext())) {
+			return Message.CERTIFICATE_CONTEXT;
+		}else {
+			certificateRepository.saveAndFlush(certificate);
+			return Message.SUCCESS;
+		}
 	}
 	
 	//删除

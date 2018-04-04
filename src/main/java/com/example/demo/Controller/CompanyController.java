@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.biz.ICompanyService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.ICompanyRepository;
 import com.example.demo.entity.CompanyEntity;
 
@@ -30,8 +31,35 @@ public class CompanyController {
 	// 添加和修改
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
-	public void saveAndFlush(CompanyEntity companyEntity) {
-		companyRepository.saveAndFlush(companyEntity);
+	public String saveAndFlush(CompanyEntity companyEntity) {
+		if (companyEntity.getName()==null || "".equals(companyEntity.getName())) {
+			return Message.COMPANY_NAME;
+		}
+		if (companyEntity.getName().length()>30) {
+			return Message.COMPANY_NAME_NUM;
+		}
+		if (companyEntity.getNameEn()==null || "".equals(companyEntity.getNameEn())) {
+			return Message.COMPANY_NAME_EN;
+		}
+		if (companyEntity.getNameEn().length()>100) {
+			return Message.COMPANY_NAME_EN_NUM;
+		}
+		if (companyEntity.getAddress()==null || "".equals(companyEntity.getAddress())) {
+			return Message.COMPANY_ADDRESS;
+		}
+		if (companyEntity.getAddress().length()>200) {
+			return Message.COMPANY_ADDRESS_NUM;
+		}
+		if (companyEntity.getAddressEn()==null || "".equals(companyEntity.getAddressEn())) {
+			return Message.COMPANY_ADDRESS_EN;
+		}
+		if (companyEntity.getAddressEn().length()>200) {
+			return Message.COMPANY_ADDRESS_EN_NUM;
+		}else {
+			companyRepository.saveAndFlush(companyEntity);
+			return Message.SUCCESS;
+		}
+		
 	}
 
 	// 删除

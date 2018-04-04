@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.biz.IFileService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.IFileRepository;
 import com.example.demo.entity.FileEn;
 import com.example.demo.entity.FileEntity;
@@ -32,11 +33,33 @@ public class FileController {
 	// 修改和添加
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
-	public void saveAndFlush(FileEntity fileEntity) {
+	public String saveAndFlush(FileEntity fileEntity) {
 		Date d = new Date();
 		fileEntity.setTime(d);
-		System.out.println(fileEntity);
-		fileRepository.saveAndFlush(fileEntity);
+
+		if (fileEntity.getFileName()==null || "".equals(fileEntity.getFileName())) {
+			return Message.FILE_NAME;
+		}
+		if (fileEntity.getFileName().length() > 30) {
+			return Message.FILE_NAME_NUM;
+		}
+		if (fileEntity.getFileEnName()==null || "".equals(fileEntity.getFileEnName())) {
+			return Message.FILE_NAME_EN;
+		}
+		if (fileEntity.getFileEnName().length() > 100) {
+			return Message.FILE_NAME_EN_NUM;
+		}
+		if (fileEntity.getFileUrl().length() <0) {
+			return Message.FILE_ZH;
+		}		
+		if (fileEntity.getFileEnUrl().length()< 0) {
+			return Message.FILE_EN;
+		}else {
+			System.out.println(fileEntity);
+			fileRepository.saveAndFlush(fileEntity);
+			return Message.SUCCESS;
+		}
+		
 	}
 
 	// 删除
@@ -50,27 +73,27 @@ public class FileController {
 	@ResponseBody
 	public List findAll() {
 		Locale locale = LocaleContextHolder.getLocale();
-		//System.out.println(locale);
+		// System.out.println(locale);
 		if (locale.toString() != null && locale.toString().equals("en_US")) {
-			//System.out.println("en_US************************");
+			// System.out.println("en_US************************");
 			return fileService.findAll();
 		} else {
-			//System.out.println("zh********************");
+			// System.out.println("zh********************");
 			return fileRepository.findAll();
 		}
 
 	}
 
-	// 根据文件id查询   
-	@RequestMapping("/findOne") 
+	// 根据文件id查询
+	@RequestMapping("/findOne")
 	@ResponseBody
 	public Object findOne(Long id) {
 		Locale locale = LocaleContextHolder.getLocale();
 		if (locale.toString() != null && locale.toString().equals("en_US")) {
-			//System.out.println("en_US************************");
+			// System.out.println("en_US************************");
 			return fileService.findById(id);
 		} else {
-			return fileRepository.findOne(id); 
+			return fileRepository.findOne(id);
 		}
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.biz.ILinkService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.ILinkRepository;
 import com.example.demo.entity.LinkEntity;
 
@@ -29,8 +30,28 @@ public class LinkController {
 	// 添加和修改
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
-	public void saveAndFlush(LinkEntity link) {
-		linkRepository.saveAndFlush(link);
+	public String saveAndFlush(LinkEntity link) {
+		if (link.getName()==null || "".equals(link.getName())) {
+			return Message.LINK_NAME;
+		}
+		if (link.getName().length()>30) {
+			return Message.LINK_NAME_NUM;
+		}
+		if (link.getNameEn()==null || "".equals(link.getNameEn())) {
+			return Message.LINK_NAME_EN;
+		}
+		if (link.getNameEn().length()>100) {
+			return Message.LINK_NAME_EN_MUN;
+		}
+		if (link.getUrl()==null || "".equals(link.getUrl())) {
+			return Message.LINK_URL;
+		}
+		if (link.getUrl().length()>100) {
+			return Message.LINK_URL_NUM;
+		}else {
+			linkRepository.saveAndFlush(link);
+			return Message.SUCCESS;
+		}	
 	}
 
 	// 删除

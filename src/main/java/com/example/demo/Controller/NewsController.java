@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.biz.INewsService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.INewsRepository;
 import com.example.demo.entity.NewsEntity;
 
@@ -32,9 +33,39 @@ public class NewsController {
 	//修改和添加
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
-	public void savaAndFlush(NewsEntity news) {
+	public String savaAndFlush(NewsEntity news) {
 		news.setTime(new Date());
-		newsRepository.saveAndFlush(news);
+		if (news.getName()==null || "".equals(news.getName())) {
+			return Message.NEWS_NAME;
+		}
+		if (news.getName().length()>30) {
+			return Message.NEWS_NAME_NUM;
+		}
+		if (news.getNameEn()==null || "".equals(news.getNameEn())) {
+			return Message.NEWS_NAME_EN;
+		}
+		if (news.getNameEn().length()>100) {
+			return Message.NEWS_NAME_EN_NUM;
+		}
+		if (news.getType()==null || "".equals(new String().valueOf(news.getType()))) {
+			return Message.NEWS_TyPE;
+		}
+		if (news.getWriter().length()>10) {
+			return Message.NEWS_WRITER_NUM;
+		}
+		if (news.getWriterEn().length()>30) {
+			return Message.NEWS_WRITER_EN_NUM;
+		}
+		if (news.getResource().length()>30) {
+			return Message.NEWS_RESOURCE_NUM;
+		}
+		if (news.getResourceEn().length()>100) {
+			return Message.NEWS_RESOURCE_EN_NUM;
+		}else {
+			newsRepository.saveAndFlush(news);
+			return Message.SUCCESS;
+		}
+		
 	}
 	
 	//删除

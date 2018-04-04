@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.biz.IBannerService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.IBannerRepository;
 import com.example.demo.entity.Banner;
 import java.util.Date;
@@ -31,42 +32,44 @@ public class BannerController {
 	// 修改和增加
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
-	public void saveAndflush(Banner banner) {
+	public String saveAndflush(Banner banner) {
 		Date d = new Date();
 		banner.setTime(d);
-		bannerRepository.saveAndFlush(banner);
+		try {
+			bannerRepository.saveAndFlush(banner);
+			return Message.SUCCESS;
+		} catch (Exception e) {
+			return Message.FAILURE;
+		}
 	}
 
 	// 删除
 	@RequestMapping("/delete")
-	public void delete(Long id) {
-		bannerRepository.delete(id);
+	public String delete(Long id) {	
+		try {
+			bannerRepository.delete(id);;
+			return Message.SUCCESS;
+		} catch (Exception e) {
+			return Message.FAILURE;
+		}
 	}
 
 	// 查询全部
 	@RequestMapping("/findAll")
 	@ResponseBody
 	public List findAll() {
-		
 		Locale locale = LocaleContextHolder.getLocale();
-		//System.out.println(locale);
 		if (locale.toString() != null && locale.toString().equals("en_US")) {
-			//System.out.println("en_US************************");
 			return bannerService.findAll();
 		} else {
-			//System.out.println("zh********************");
 			return bannerRepository.findAll();
 		}
 	}
 
+	//根据id查询
 	@RequestMapping("/findOne")
 	@ResponseBody
 	public Banner findOne(Long id) {
 		return bannerRepository.findOne(id);
-	}
-
-	public void upload() {
-		 
-		
 	}
 }

@@ -19,6 +19,7 @@ public class Message {
      * 文件管理
      */
     public static final String SUCCESS ="操作成功";
+    public static final String FAILURE ="操作失败";
     public static final String FILE_NAME_EN = "文件英文名称不能为空";
     public static final String FILE_NAME = "文件名称不能为空";
     public static final String FILE_NAME_EN_NUM = "文件英文名长度不能超过100个字";

@@ -138,11 +138,17 @@ public class GoodsController {
      *删除
     */
     @RequestMapping("/delete")
-    public void delete(String ids){
-        String[] idss=ids.split(",");
-        if (idss.length>0) {
-            for (String id : idss)
-                iGoodsRepository.delete(Long.valueOf(id));
+    @ResponseBody
+    public String delete(String ids){
+        try {
+            String[] idss=ids.split(",");
+            if (idss.length>0) {
+                for (String id : idss)
+                    iGoodsRepository.delete(Long.valueOf(id));
+            }
+            return Message.deletesuccess;
+        } catch (Exception e) {
+           return  Message.deletefaile;
         }
     }
     /**
@@ -174,11 +180,6 @@ public class GoodsController {
     @RequestMapping("/findByGoodsName")
     @ResponseBody
     public GoodsEntity findByGoodsName(String goodsName){
-        try {
-            goodsName=new String(goodsName.getBytes("ISO-8859-1"),"UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
         GoodsEntity goodsEntity=iGoodsRepository.findByGoodsName(goodsName);
         return goodsEntity;
 

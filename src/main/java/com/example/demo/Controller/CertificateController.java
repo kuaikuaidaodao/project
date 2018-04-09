@@ -33,7 +33,6 @@ public class CertificateController {
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
 	public String savaAndFlush(CertificateEntity certificate) {
-		System.out.println(certificate.getId()+"**"+certificate.getContext()+"**"+certificate.getContextEn()+"**"+certificate.getImageUrls());
 		if (certificate.getContext()==null || "".equals(certificate.getContext())) {
 			return Message.CERTIFICATE_CONTEXT;
 		}else {

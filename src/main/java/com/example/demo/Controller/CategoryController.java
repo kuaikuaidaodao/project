@@ -56,10 +56,23 @@ public class CategoryController {
     @ResponseBody
     public String saveAndflush(CategoryEntity category){
         try{
-           iCategoryRepository.saveAndFlush(category);
-           return Message.saveAndflushsuccess;
+        	if (category.getCategoryNameChinese()==null || "".equals(category.getCategoryNameChinese())) {
+				return Message.CATEGORY_NAME;
+			}
+        	if (category.getCategoryNameChinese().length()>30) {
+        		return Message.CATEGORY_NAME_NUM;
+			}
+        	if (category.getCategoryNameEnglish()==null || "".equals(category.getCategoryNameEnglish())) {
+        		return Message.CATEGORY_NAME_EN;
+			}
+        	if (category.getCategoryNameEnglish().length()>100) {
+        		return Message.CATEGORY_NAME_EN_NUM;
+			}else {
+				iCategoryRepository.saveAndFlush(category);
+		           return Message.SUCCESS;
+			}     
         }catch (Exception e){
-           return  Message.saveAndflushfaile;
+           return  Message.FAILURE;
         }
     }
     /**
@@ -116,15 +129,15 @@ public class CategoryController {
     public String delete(String ids){
         String str = deleteyz(ids);
         try{
-            if (str.equals("删除成功")){
+            if (str.equals(Message.SUCCESS)){
                 String[] idss = ids.split(",");
                 for (String id : idss) {
                     iCategoryRepository.delete(Long.valueOf(id));
                 }
             }
-            return Message.deletesuccess;
+            return Message.SUCCESS;
         }catch (Exception e){
-            return Message.deletefaile;
+            return Message.FACTORY_NAME;
         }
     }
     /**
@@ -156,9 +169,9 @@ public class CategoryController {
                     }
                 }
             }
-            return Message.deletesuccess;
+            return Message.SUCCESS;
         } catch (Exception e) {
-            return Message.deletefaile;
+            return Message.FAILURE;
         }
 
     }

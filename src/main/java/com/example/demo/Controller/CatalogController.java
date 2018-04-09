@@ -99,10 +99,23 @@ public class CatalogController {
     @ResponseBody
     public String firstlevelfind(MenuEntity menuEntity) {
         try {
-            iCatalogRepository.saveAndFlush(menuEntity);
-            return Message.saveAndflushsuccess;
+        	if (menuEntity.getMenuNameChinese()==null || "".equals(menuEntity.getMenuNameChinese())) {
+				return Message.CATALOG_NAME;
+			}
+        	if (menuEntity.getMenuNameChinese().length()>30) {
+        		return Message.CATALOG_NAME_NUM;
+			}
+        	if (menuEntity.getMenuNameEnglish()==null || "".equals(menuEntity.getMenuNameEnglish())) {
+        		return Message.CATALOG_NAME_EN;
+			}
+        	if (menuEntity.getMenuNameEnglish().length()>100) {
+        		return Message.CATALOG_NAME_EN_NUM;
+			}else {
+				iCatalogRepository.saveAndFlush(menuEntity);
+	            return Message.SUCCESS;
+			}  
         } catch (Exception e) {
-            return Message.saveAndflushfaile;
+            return Message.FAILURE;
         }
 
     }
@@ -115,15 +128,15 @@ public class CatalogController {
     public String delete(String ids) {
         String str = deleteyz(ids);
         try{
-        if (str.equals("删除成功")){
+        if (str.equals(Message.SUCCESS)){
             String[] idss = ids.split(",");
             for (String id : idss) {
                     iCatalogRepository.delete(Long.valueOf(id));
                 }
         }
-            return Message.deletesuccess;
+            return Message.SUCCESS;
         }catch (Exception e){
-            return Message.deletefaile;
+            return Message.FAILURE;
         }
 
     }
@@ -208,9 +221,9 @@ public class CatalogController {
                     }
                 }
             }
-            return Message.deletesuccess;
+            return Message.SUCCESS;
         } catch (Exception e) {
-            return Message.deletefaile;
+            return Message.FAILURE;
         }
 
     }

@@ -13,6 +13,10 @@ public class Message {
     public static final String LoginFaile="用户名不存在或密码错误";
     public static final String usercount="账户不能为空";
     public static final String userword="密码不能为空";
+    public static final String USER_NAME="用户名不能为空";
+    public static final String USER_NAME_NUM="用户名不能超过15个字";
+    public static final String USER_PASSWORD="密码不能为空";
+    public static final String USER_PASSWORD_NUM="密码不能少于4个字大于10个字";
     
     
     /**
@@ -71,14 +75,7 @@ public class Message {
      * 资历证书
      */
     public static final String CERTIFICATE_CONTEXT="证书内容不能为空";
-    
-    /**
-     * 菜单
-     */
-    public static final String saveAndflushsuccess="操作成功";
-    public static final String saveAndflushfaile="操作成功";
-    public static final String deletesuccess="删除成功";
-    public static final String deletefaile="删除失败";
+  
 
     /**
      * 画册
@@ -105,4 +102,55 @@ public class Message {
     public static final String FACTORY_NAME_NUM="名称不能超过30个字";
     public static final String FACTORY_NAME_EN="英文名称不能为空";
     public static final String FACTORY_NAME_EN_NUM="英文名称不能超过100个字";
+    
+    /**
+     * 菜单
+     */
+    public static final String CATALOG_NAME="菜单名称不能为空";
+    public static final String CATALOG_NAME_NUM="菜单名称不能大于30个字";
+    public static final String CATALOG_NAME_EN="菜单英文名称不能为空";
+    public static final String CATALOG_NAME_EN_NUM="菜单英文名称不能大于100个字";
+    
+    
+    /**
+     * 类目
+     */
+    public static final String CATEGORY_NAME="类目名称不能为空";
+    public static final String CATEGORY_NAME_NUM="类目名称不能大于30个字";
+    public static final String CATEGORY_NAME_EN="类目英文名称不能为空";
+    public static final String CATEGORY_NAME_EN_NUM="类目英文名称不能大于100个字";
+    
+    
+    /**
+     * 商品
+     */
+    public static final String GOODS_NAME="商品名称不能为空";
+    public static final String GOODS_NAME_NUM="商品名称不能超过30个字";
+    public static final String GOODS_NAME_EN="商品英文名称不能为空";
+    public static final String GOODS_NAME_EN_NUM="商品英文名称不能超过100个字";
+    public static final String GOODS_BRAND="商品品牌不能为空";
+    public static final String GOODS_BRAND_NUM="商品品牌不能超过30个字";
+    public static final String GOODS_BRAND_EN="商品英文品牌不能为空";
+    public static final String GOODS_BRAND_EN_NUM="商品英文品牌不能超过100个字";
+    public static final String GOODS_BULK="商品体积不能为空";
+    public static final String GOODS_BULE_NUN="商品体积不能超过30个字";
+    public static final String GOODS_BULK_EN="商品英文体积不能为空";
+    public static final String GOODS_BULK_EN_NUM="商品英文体积不能超过100个字";
+    public static final String GOODS_MODEL="商品型号不能为空";
+    public static final String GOODS_MODEL_NUM="商品型号不能超过30个字";
+    public static final String GOODS_MODEL_EN="商品英文型号不能为空";
+    public static final String GOODS_MODEL_EN_NUM="商品英文型号不能超过100个字";
+    public static final String GOODS_WEIGHT="商品重量不能为空";
+    public static final String GOODS_WEIGHT_NUM="商品重量不能超过30个字";
+    public static final String GOODS_WEIGHT_EN="商品英文重量不能为空";
+    public static final String GOODS_WEIGHT_EN_NUM="商品英文重量不能超过100个字";
+    public static final String GOODS_NUMBER="商品数量不能为空";
+    public static final String GOODS_NUMBER_NUM="商品数量不能超过30个字";
+    public static final String GOODS_NUMBER_EN="商品英文重量不能为空";
+    public static final String GOODS_NUMBER_EN_NUM="商品英文重量不能超过100个字";
+    
+    
+    
+    
+    
 }

@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.biz.IGoodsService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.ICategoryRepository;
 import com.example.demo.dao.IGoodsRepository;
 import com.example.demo.entity.CategoryEntity;
@@ -74,8 +75,64 @@ public class GoodsController {
     */
     @RequestMapping("/saveAndflush")
     @ResponseBody
-    public void saveAndflush(GoodsEntity goodsEntity){
-        iGoodsRepository.saveAndFlush(goodsEntity);
+    public String saveAndflush(GoodsEntity goods){
+    	if (goods.getGoodsNameChinese()==null || "".equals(goods.getGoodsNameChinese())) {
+			return Message.GOODS_NAME;
+		}
+    	if (goods.getGoodsNameChinese().length()>30) {
+			return Message.GOODS_NAME_NUM;
+		}
+    	if (goods.getGoodsNameEnglish().length()>100) {
+			return Message.GOODS_NAME_EN_NUM;
+		}
+    	if (goods.getGoodsBrandChinese()==null || "".equals(goods.getGoodsBrandChinese())) {
+			return Message.GOODS_BRAND;
+		}
+    	if (goods.getGoodsBrandChinese().length()>30) {
+    		return Message.GOODS_BRAND_NUM;
+		} 
+    	if (goods.getGoodsBrandEnglish().length()>100) {
+			return Message.GOODS_BRAND_EN_NUM;
+		}
+    	if (goods.getGoodsBulkChinese()==null || "".equals(goods.getGoodsBulkChinese())) {
+			return Message.GOODS_BULK;
+		}
+    	if (goods.getGoodsBulkChinese().length()>30) {
+			return Message.GOODS_BULE_NUN;
+		}
+    	if (goods.getGoodsBulkEnglish().length()>100) {
+    		return Message.GOODS_BRAND_EN_NUM;
+		}
+    	if (goods.getGoodsModelChinese() == null || "".equals(goods.getGoodsModelChinese())) {
+			return Message.GOODS_MODEL;
+		}
+    	if (goods.getGoodsModelChinese().length()>30) {
+			return Message.GOODS_MODEL_NUM;
+		}
+    	if (goods.getGoodsModelEnglish().length()>100) {
+			return Message.GOODS_MODEL_EN_NUM;
+		}
+    	if (goods.getGoodsWeightChinese() ==null || "".equals(goods.getGoodsWeightChinese())) {
+			return Message.GOODS_WEIGHT;
+		}
+    	if (goods.getGoodsWeightChinese().length()>30) {
+    		return Message.GOODS_WEIGHT_NUM;
+		}
+    	if (goods.getGoodsWeightEnglish().length()>100) {
+    		return Message.GOODS_WEIGHT_EN_NUM;
+		}
+    	if (goods.getGoodsNumberChinese()==null || "".equals(goods.getGoodsNumberChinese())) {
+    		return Message.GOODS_NUMBER;
+		}
+    	if (goods.getGoodsNumberChinese().length()>30) {
+			return Message.GOODS_NUMBER_NUM;
+		}
+    	if (goods.getGoodsNumberEnglish().length()>100) {
+    		return Message.GOODS_NUMBER_EN_NUM;
+		}else {
+			iGoodsRepository.saveAndFlush(goods);
+	        return Message.SUCCESS;
+		}      
     }
      /**
      *删除

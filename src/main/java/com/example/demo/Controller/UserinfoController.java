@@ -98,12 +98,25 @@ public class UserinfoController {
 	public String saveAndflush(UserinfoEntity userinfoEntity) {
 		String i = "操作成功";
 		try {
-			userinfoEntity.setPassword(Des.encryptBasedDes(userinfoEntity.getPassword()));
-			iUserinfoService.saveAndflush(userinfoEntity);
+			if (userinfoEntity.getUserName()==null || "".equals(userinfoEntity.getUserName())) {
+				return Message.USER_NAME;
+			}
+			if (userinfoEntity.getUserName().length()>15) {
+				return Message.USER_NAME_NUM;
+			}
+			if (userinfoEntity.getPassword()==null || "".equals(userinfoEntity.getPassword())) {
+				return Message.USER_PASSWORD;
+			}
+			if (userinfoEntity.getPassword().length()<4 || userinfoEntity.getPassword().length()>10) {
+				return Message.USER_PASSWORD_NUM;
+			}else {
+				userinfoEntity.setPassword(Des.encryptBasedDes(userinfoEntity.getPassword()));
+				iUserinfoService.saveAndflush(userinfoEntity);
+				return Message.SUCCESS;
+			}	
 		} catch (Exception e) {
-			i = "操作失败";
-		}
-		return i;
+			return Message.FAILURE;
+		}		
 	}
 
 	/*
@@ -112,13 +125,12 @@ public class UserinfoController {
 	@RequestMapping("/delete")
 	@ResponseBody
 	public String delete(String ids) {
-		String i = "成功";
 		try {
 			iUserinfoService.delete(ids);
+			return Message.SUCCESS;
 		} catch (Exception e) {
-			i = "失败";
-		}
-		return i;
+			return Message.FAILURE;
+		}		
 	}
 
 	/*

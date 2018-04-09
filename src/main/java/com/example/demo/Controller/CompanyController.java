@@ -55,6 +55,12 @@ public class CompanyController {
 		}
 		if (companyEntity.getAddressEn().length()>200) {
 			return Message.COMPANY_ADDRESS_EN_NUM;
+		}
+		if (companyEntity.getPhone()==null || "".equals(companyEntity.getPhone())) {
+			return Message.COMPANY_PHONE;
+		}
+		if (companyEntity.getPhone().length()>15) {
+			return Message.COMPANY_PHONE_NUM;
 		}else {
 			companyRepository.saveAndFlush(companyEntity);
 			return Message.SUCCESS;
@@ -64,8 +70,13 @@ public class CompanyController {
 
 	// 删除
 	@RequestMapping("/delete")
-	public void delete(Long id) {
-		companyRepository.delete(id);
+	public String delete(Long id) {
+		try {
+			companyRepository.delete(id);
+			return Message.SUCCESS;		
+		} catch (Exception e) {
+			return Message.FAILURE;
+		}	
 	}
 
 	// 查询所有信息

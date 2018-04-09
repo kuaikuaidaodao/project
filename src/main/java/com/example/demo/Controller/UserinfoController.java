@@ -96,12 +96,12 @@ public class UserinfoController {
 	@RequestMapping("/saveAndflush")
 	@ResponseBody
 	public String saveAndflush(UserinfoEntity userinfoEntity) {
-		String i = "成功";
+		String i = "操作成功";
 		try {
 			userinfoEntity.setPassword(Des.encryptBasedDes(userinfoEntity.getPassword()));
 			iUserinfoService.saveAndflush(userinfoEntity);
 		} catch (Exception e) {
-			i = "失败";
+			i = "操作失败";
 		}
 		return i;
 	}

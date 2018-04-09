@@ -44,8 +44,13 @@ public class CertificateController {
 	
 	//删除
 	@RequestMapping("/delete")
-	public void delete(Long id) {
-		certificateRepository.delete(id);
+	public String delete(Long id) {
+		try {
+			certificateRepository.delete(id);
+			return Message.SUCCESS;
+		} catch (Exception e) {
+			return Message.FAILURE;
+		}	
 	}
 	
 	//查询所有

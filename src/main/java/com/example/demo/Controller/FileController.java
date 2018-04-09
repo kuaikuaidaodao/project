@@ -64,8 +64,13 @@ public class FileController {
 
 	// 删除
 	@RequestMapping("/delete")
-	public void delete(Long id) {
-		fileRepository.delete(id);
+	public String delete(Long id) {
+		try {
+			fileRepository.delete(id);
+			return Message.SUCCESS;
+		} catch (Exception e) {
+			return Message.FAILURE;
+		}	
 	}
 
 	// 查询所有文件

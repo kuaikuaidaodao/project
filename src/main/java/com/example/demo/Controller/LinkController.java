@@ -56,8 +56,13 @@ public class LinkController {
 
 	// 删除
 	@RequestMapping("/delete")
-	public void delete(Long id) {
-		linkRepository.delete(id);
+	public String delete(Long id) {
+		try {
+			linkRepository.delete(id);
+			return Message.SUCCESS;
+		} catch (Exception e) {
+			return Message.FAILURE;
+		}	
 	}
 
 	// 查询所有链接

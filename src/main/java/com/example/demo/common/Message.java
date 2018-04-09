@@ -47,9 +47,11 @@ public class Message {
     public static final String COMPANY_NAME_EN_NUM="公司英文名称不能大于100个字";
     public static final String COMPANY_ADDRESS="公司地址不能为空";
     public static final String COMPANY_ADDRESS_NUM="公司地址不能大于100个字";
-    public static final String COMPANY_ADDRESS_EN="公司英文名称不能为空";
-    public static final String COMPANY_ADDRESS_EN_NUM="公司英文名称不能大于200个字";
-
+    public static final String COMPANY_ADDRESS_EN="公司英文地址不能为空";
+    public static final String COMPANY_ADDRESS_EN_NUM="公司英文地址不能大于200个字";
+    public static final String COMPANY_PHONE="联系电话不能为空";
+    public static final String COMPANY_PHONE_NUM="联系电话不能大于15个字";
+    
     
     /**
      * 新闻资讯
@@ -71,4 +73,29 @@ public class Message {
     public static final String CERTIFICATE_CONTEXT="证书内容不能为空";
     
 
+    /**
+     * 画册
+     */
+    public static final String PHOTO_NAME="画册名称不能为空";
+    public static final String PHOTO_NAME_NUM="画册名称不能大于30个字";
+    public static final String PHOTO_NAME_EN="画册英文名称不能为空";
+    public static final String PHOTO_NAME_EN_NUM="画册英文名称不能大于100个字";
+    
+    
+    /**
+     * 品牌理念
+     */
+    public static final String IDEA_NAME="名称不能为空";
+    public static final String IDEA_NAME_NUM="名称不能大于30个字";
+    public static final String IDEA_NAME_EN="英文名称不能为空";
+    public static final String IDEA_NAME_EN_NUM="英文名称不能大于30个字";
+    public static final String IDEA_CONTEXT="内容不能为空";
+    
+    /**
+     * 工厂展示
+     */
+    public static final String FACTORY_NAME="名称不能为空";
+    public static final String FACTORY_NAME_NUM="名称不能超过30个字";
+    public static final String FACTORY_NAME_EN="英文名称不能为空";
+    public static final String FACTORY_NAME_EN_NUM="英文名称不能超过100个字";
 }

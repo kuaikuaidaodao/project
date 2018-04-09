@@ -24,75 +24,89 @@ import com.example.demo.entity.NewsEntity;
 @Controller
 @RequestMapping("/news")
 public class NewsController {
-	
+
 	@Autowired
 	private INewsRepository newsRepository;
 	@Autowired
 	private INewsService newsService;
 
-	//修改和添加
+	// 修改和添加
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
 	public String savaAndFlush(NewsEntity news) {
 		news.setTime(new Date());
-		if (news.getName()==null || "".equals(news.getName())) {
+		if (news.getName() == null || "".equals(news.getName())) {
 			return Message.NEWS_NAME;
 		}
-		if (news.getName().length()>30) {
+		if (news.getName().length() > 30) {
 			return Message.NEWS_NAME_NUM;
 		}
-		if (news.getNameEn()==null || "".equals(news.getNameEn())) {
+		if (news.getNameEn() == null || "".equals(news.getNameEn())) {
 			return Message.NEWS_NAME_EN;
 		}
-		if (news.getNameEn().length()>100) {
+		if (news.getNameEn().length() > 100) {
 			return Message.NEWS_NAME_EN_NUM;
 		}
-		if (news.getType()==null || "".equals(new String().valueOf(news.getType()))) {
+		if (news.getType() == null || "".equals(new String().valueOf(news.getType()))) {
 			return Message.NEWS_TyPE;
 		}
-		if (news.getWriter().length()>10) {
+		if (news.getWriter().length() > 10) {
 			return Message.NEWS_WRITER_NUM;
 		}
-		if (news.getWriterEn().length()>30) {
+		if (news.getWriterEn().length() > 30) {
 			return Message.NEWS_WRITER_EN_NUM;
 		}
-		if (news.getResource().length()>30) {
+		if (news.getResource().length() > 30) {
 			return Message.NEWS_RESOURCE_NUM;
 		}
-		if (news.getResourceEn().length()>100) {
+		if (news.getResourceEn().length() > 100) {
 			return Message.NEWS_RESOURCE_EN_NUM;
-		}else {
+		} else {
 			newsRepository.saveAndFlush(news);
 			return Message.SUCCESS;
 		}
-		
+
 	}
-	
-	//删除
+
+	// 删除
 	@RequestMapping("/delete")
-	public void delete(Long id) {
-		newsRepository.delete(id);
+	public String delete(Long id) {
+		try {
+			newsRepository.delete(id);
+			return Message.SUCCESS;
+		} catch (Exception e) {
+			return Message.FAILURE;
+		}
 	}
-	
-	//查询所有
-	@RequestMapping("/findAll")
+
+	// 根据类型查询所有
+	@RequestMapping("/findAllByType")
 	@ResponseBody
-	public List findAll(Long type) {
+	public List findAllByType(Long type) {
 		Locale locale = LocaleContextHolder.getLocale();
 		if (locale.toString() != null && locale.toString().equals("en_US")) {
 			return newsService.findAll(type);
 		} else {
 			return newsService.findAllByType(type);
 		}
-    }
-	
-	//根据id查询
+	}
+
+	// 查询所有
+	@RequestMapping("/findAll")
+	@ResponseBody
+	public List findAll() {
+		return newsRepository.findAll();
+	}
+
+	// 根据id查询
+	@RequestMapping("/findOne")
+	@ResponseBody
 	public Object findOne(Long id) {
 		Locale locale = LocaleContextHolder.getLocale();
 		if (locale.toString() != null && locale.toString().equals("en_US")) {
 			return newsService.findById(id);
 		} else {
-			return newsRepository.findOne(id); 
+			return newsRepository.findOne(id);
 		}
 	}
 }

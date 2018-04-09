@@ -20,15 +20,35 @@ public class Goods {
      */
     private  String  goodsInfo;
 
-    /**
-     * 商品详情
-     */
-    private  String  goodsInfoDetail;
 
     /**
      * 商品图片
      */
     private  String  goodsUrl;
+    /**
+     * 商品型号
+     */
+    private  String  goodsModel;
+
+    /**
+     * 商品品牌
+     */
+    private  String  goodsBrand;
+    /**
+     * 包装数量
+     */
+    private  String  goodsNumber;
+
+    /**
+     * 包装体积
+     */
+    private  String  goodsBulk;
+
+    /**
+     * 包装重量
+     */
+    private  String  goodsWeight;
+
 
     public Long getGoodsId() {
         return goodsId;
@@ -54,19 +74,51 @@ public class Goods {
         this.goodsInfo = goodsInfo;
     }
 
-    public String getGoodsInfoDetail() {
-        return goodsInfoDetail;
-    }
-
-    public void setGoodsInfoDetail(String goodsInfoDetail) {
-        this.goodsInfoDetail = goodsInfoDetail;
-    }
-
     public String getGoodsUrl() {
         return goodsUrl;
     }
 
     public void setGoodsUrl(String goodsUrl) {
         this.goodsUrl = goodsUrl;
+    }
+
+    public String getGoodsModel() {
+        return goodsModel;
+    }
+
+    public void setGoodsModel(String goodsModel) {
+        this.goodsModel = goodsModel;
+    }
+
+    public String getGoodsBrand() {
+        return goodsBrand;
+    }
+
+    public void setGoodsBrand(String goodsBrand) {
+        this.goodsBrand = goodsBrand;
+    }
+
+    public String getGoodsNumber() {
+        return goodsNumber;
+    }
+
+    public void setGoodsNumber(String goodsNumber) {
+        this.goodsNumber = goodsNumber;
+    }
+
+    public String getGoodsBulk() {
+        return goodsBulk;
+    }
+
+    public void setGoodsBulk(String goodsBulk) {
+        this.goodsBulk = goodsBulk;
+    }
+
+    public String getGoodsWeight() {
+        return goodsWeight;
+    }
+
+    public void setGoodsWeight(String goodsWeight) {
+        this.goodsWeight = goodsWeight;
     }
 }

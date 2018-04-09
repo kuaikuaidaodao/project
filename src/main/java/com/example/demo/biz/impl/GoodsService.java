@@ -48,10 +48,22 @@ public class GoodsService implements IGoodsService {
                 goods.setGoodsInfo(obj[1].toString());
             }
             if (null != obj[2]) {
-                goods.setGoodsInfoDetail(obj[2].toString());
+                goods.setGoodsModel(obj[2].toString());
             }
             if (null != obj[3]) {
-                goods.setGoodsUrl(obj[3].toString());
+                goods.setGoodsBrand(obj[3].toString());
+            }
+            if (null != obj[4]) {
+                goods.setGoodsNumber(obj[4].toString());
+            }
+            if (null != obj[5]) {
+                goods.setGoodsBulk(obj[5].toString());
+            }
+            if (null != obj[6]) {
+                goods.setGoodsWeight(obj[6].toString());
+            }
+            if (null != obj[7]) {
+                goods.setGoodsUrl(obj[7].toString());
             }
         }
         return goods;
@@ -69,10 +81,22 @@ public class GoodsService implements IGoodsService {
                 goods.setGoodsInfo(obj[1].toString());
             }
             if (null != obj[2]) {
-                goods.setGoodsInfoDetail(obj[2].toString());
+                goods.setGoodsModel(obj[2].toString());
             }
             if (null != obj[3]) {
-                goods.setGoodsUrl(obj[3].toString());
+                goods.setGoodsBrand(obj[3].toString());
+            }
+            if (null != obj[4]) {
+                goods.setGoodsNumber(obj[4].toString());
+            }
+            if (null != obj[5]) {
+                goods.setGoodsBulk(obj[5].toString());
+            }
+            if (null != obj[6]) {
+                goods.setGoodsWeight(obj[6].toString());
+            }
+            if (null != obj[7]) {
+                goods.setGoodsUrl(obj[7].toString());
             }
         }
         return goods;
@@ -98,10 +122,22 @@ public class GoodsService implements IGoodsService {
                 goods.setGoodsInfo(obj[2].toString());
             }
             if (null != obj[3]) {
-                goods.setGoodsInfoDetail(obj[3].toString());
+                goods.setGoodsModel(obj[3].toString());
             }
             if (null != obj[4]) {
-                goods.setGoodsUrl(obj[4].toString());
+                goods.setGoodsBrand(obj[4].toString());
+            }
+            if (null != obj[5]) {
+                goods.setGoodsNumber(obj[5].toString());
+            }
+            if (null != obj[6]) {
+                goods.setGoodsBulk(obj[6].toString());
+            }
+            if (null != obj[7]) {
+                goods.setGoodsWeight(obj[7].toString());
+            }
+            if (null != obj[8]) {
+                goods.setGoodsUrl(obj[8].toString());
             }
             good.add(goods);
         }

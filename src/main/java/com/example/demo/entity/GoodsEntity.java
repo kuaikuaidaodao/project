@@ -34,13 +34,45 @@ public class GoodsEntity {
      */
     private  String  goodsInfoEnglish;
     /**
-     * 商品详情 中文
+     * 商品型号 中文
      */
-    private  String  goodsInfoDetailChinese;
+    private  String  goodsModelChinese;
     /**
-     * 商品详情 英文
+     * 商品型号 英文
      */
-    private  String  goodsInfoDetailEnglish;
+    private  String  goodsModelEnglish;
+    /**
+     * 商品品牌 中文
+     */
+    private  String  goodsBrandChinese;
+    /**
+     * 商品品牌 英文
+     */
+    private  String  goodsBrandEnglish;
+    /**
+     * 包装数量 中文
+     */
+    private  String  goodsNumberChinese;
+    /**
+     * 包装数量 英文
+     */
+    private  String  goodsNumberEnglish;
+    /**
+     * 包装体积 中文
+     */
+    private  String  goodsBulkChinese;
+    /**
+     * 包装体积 英文
+     */
+    private  String  goodsBulkEnglish;
+    /**
+     * 包装重量 中文
+     */
+    private  String  goodsWeightChinese;
+    /**
+     * 包装重量 英文
+     */
+    private  String  goodsWeightEnglish;
     /**
      * 商品图片 中文
      */
@@ -108,24 +140,6 @@ public class GoodsEntity {
         this.goodsInfoEnglish = goodsInfoEnglish;
     }
     @Basic
-    @Column(name = "goods_info_detail_chinese")
-    public String getGoodsInfoDetailChinese() {
-        return goodsInfoDetailChinese;
-    }
-
-    public void setGoodsInfoDetailChinese(String goodsInfoDetailChinese) {
-        this.goodsInfoDetailChinese = goodsInfoDetailChinese;
-    }
-    @Basic
-    @Column(name = "goods_info_detail_English")
-    public String getGoodsInfoDetailEnglish() {
-        return goodsInfoDetailEnglish;
-    }
-
-    public void setGoodsInfoDetailEnglish(String goodsInfoDetailEnglish) {
-        this.goodsInfoDetailEnglish = goodsInfoDetailEnglish;
-    }
-    @Basic
     @Column(name = "goods_url_chinese")
     public String getGoodsUrlChinese() {
         return goodsUrlChinese;
@@ -160,45 +174,93 @@ public class GoodsEntity {
     public void setSort(Long sort) {
         this.sort = sort;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GoodsEntity that = (GoodsEntity) o;
-        return Objects.equals(goodsId, that.goodsId) &&
-                Objects.equals(goodsNameChinese, that.goodsNameChinese) &&
-                Objects.equals(goodsNameEnglish, that.goodsNameEnglish) &&
-                Objects.equals(goodsInfoChinese, that.goodsInfoChinese) &&
-                Objects.equals(goodsInfoEnglish, that.goodsInfoEnglish) &&
-                Objects.equals(goodsInfoDetailChinese, that.goodsInfoDetailChinese) &&
-                Objects.equals(goodsInfoDetailEnglish, that.goodsInfoDetailEnglish) &&
-                Objects.equals(goodsUrlChinese, that.goodsUrlChinese) &&
-                Objects.equals(goodsUrlEnglish, that.goodsUrlEnglish) &&
-                Objects.equals(categoryId, that.categoryId) &&
-                Objects.equals(sort, that.sort);
+    @Basic
+    @Column(name = "goods_model_chinese")
+    public String getGoodsModelChinese() {
+        return goodsModelChinese;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(goodsId, goodsNameChinese, goodsNameEnglish, goodsInfoChinese, goodsInfoEnglish, goodsInfoDetailChinese, goodsInfoDetailEnglish, goodsUrlChinese, goodsUrlEnglish, categoryId, sort);
+    public void setGoodsModelChinese(String goodsModelChinese) {
+        this.goodsModelChinese = goodsModelChinese;
+    }
+    @Basic
+    @Column(name = "goods_model_english")
+    public String getGoodsModelEnglish() {
+        return goodsModelEnglish;
     }
 
-    @Override
-    public String toString() {
-        return "GoodsEntity{" +
-                "goodsId=" + goodsId +
-                ", goodsNameChinese='" + goodsNameChinese + '\'' +
-                ", goodsNameEnglish='" + goodsNameEnglish + '\'' +
-                ", goodsInfoChinese='" + goodsInfoChinese + '\'' +
-                ", goodsInfoEnglish='" + goodsInfoEnglish + '\'' +
-                ", goodsInfoDetailChinese='" + goodsInfoDetailChinese + '\'' +
-                ", goodsInfoDetailEnglish='" + goodsInfoDetailEnglish + '\'' +
-                ", goodsUrlChinese='" + goodsUrlChinese + '\'' +
-                ", goodsUrlEnglish='" + goodsUrlEnglish + '\'' +
-                ", categoryId=" + categoryId +
-                ", sort=" + sort +
-                '}';
+    public void setGoodsModelEnglish(String goodsModelEnglish) {
+        this.goodsModelEnglish = goodsModelEnglish;
+    }
+    @Basic
+    @Column(name = "goods_brand_chinese")
+    public String getGoodsBrandChinese() {
+        return goodsBrandChinese;
+    }
+
+    public void setGoodsBrandChinese(String goodsBrandChinese) {
+        this.goodsBrandChinese = goodsBrandChinese;
+    }
+    @Basic
+    @Column(name = "goods_brand_english")
+    public String getGoodsBrandEnglish() {
+        return goodsBrandEnglish;
+    }
+
+    public void setGoodsBrandEnglish(String goodsBrandEnglish) {
+        this.goodsBrandEnglish = goodsBrandEnglish;
+    }
+    @Basic
+    @Column(name = "goods_number_chinese")
+    public String getGoodsNumberChinese() {
+        return goodsNumberChinese;
+    }
+
+    public void setGoodsNumberChinese(String goodsNumberChinese) {
+        this.goodsNumberChinese = goodsNumberChinese;
+    }
+    @Basic
+    @Column(name = "goods_number_english")
+    public String getGoodsNumberEnglish() {
+        return goodsNumberEnglish;
+    }
+
+    public void setGoodsNumberEnglish(String goodsNumberEnglish) {
+        this.goodsNumberEnglish = goodsNumberEnglish;
+    }
+    @Basic
+    @Column(name = "goods_bulk_chinese")
+    public String getGoodsBulkChinese() {
+        return goodsBulkChinese;
+    }
+    public void setGoodsBulkChinese(String goodsBulkChinese) {
+        this.goodsBulkChinese = goodsBulkChinese;
+    }
+    @Basic
+    @Column(name = "goods_bulk_english")
+    public String getGoodsBulkEnglish() {
+        return goodsBulkEnglish;
+    }
+
+    public void setGoodsBulkEnglish(String goodsBulkEnglish) {
+        this.goodsBulkEnglish = goodsBulkEnglish;
+    }
+    @Basic
+    @Column(name = "goods_weight_chinese")
+    public String getGoodsWeightChinese() {
+        return goodsWeightChinese;
+    }
+
+    public void setGoodsWeightChinese(String goodsWeightChinese) {
+        this.goodsWeightChinese = goodsWeightChinese;
+    }
+    @Basic
+    @Column(name = "goods_weight_english")
+    public String getGoodsWeightEnglish() {
+        return goodsWeightEnglish;
+    }
+
+    public void setGoodsWeightEnglish(String goodsWeightEnglish) {
+        this.goodsWeightEnglish = goodsWeightEnglish;
     }
 }

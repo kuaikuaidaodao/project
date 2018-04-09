@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.biz.ICategoryService;
+import com.example.demo.common.Message;
 import com.example.demo.dao.ICategoryRepository;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.CategoryEntity;
@@ -39,7 +40,7 @@ public class CategoryController {
 
     }
     /**
-     *  查询  前台  中英文
+     *  查询  后台全部
      */
     @RequestMapping("category_findAll")
     @ResponseBody
@@ -52,8 +53,14 @@ public class CategoryController {
      * 商品类目增加 修改
      */
     @RequestMapping("saveAndflush")
-    public void saveAndflush(CategoryEntity category){
-        iCategoryRepository.saveAndFlush(category);
+    @ResponseBody
+    public String saveAndflush(CategoryEntity category){
+        try{
+           iCategoryRepository.saveAndFlush(category);
+           return Message.saveAndflushsuccess;
+        }catch (Exception e){
+           return  Message.saveAndflushfaile;
+        }
     }
     /**
      * 商品类目单个查询 通过类目id  后台使用 查询为单个全部信息
@@ -105,10 +112,19 @@ public class CategoryController {
      * 类目删除
      */
     @RequestMapping("delete")
-    public void delete(String ids){
-        String[] idss=ids.split(",");
-        for (String id:idss) {
-            iCategoryRepository.delete(Long.valueOf(id));
+    @ResponseBody
+    public String delete(String ids){
+        String str = deleteyz(ids);
+        try{
+            if (str.equals("删除成功")){
+                String[] idss = ids.split(",");
+                for (String id : idss) {
+                    iCategoryRepository.delete(Long.valueOf(id));
+                }
+            }
+            return Message.deletesuccess;
+        }catch (Exception e){
+            return Message.deletefaile;
         }
     }
     /**
@@ -121,6 +137,28 @@ public class CategoryController {
             return "en_US";
         }else{
             return "zh_CN";
+        }
+
+    }
+    public String deleteyz(String ids) {
+        try {
+            String[] idss = ids.split(",");
+            String sb = "";
+            if (idss != null) {
+                for (String id : idss) {
+                    List<Long> mm = iCategoryRepository.findCategoryId(Long.valueOf(id));
+                    for (Long nn : mm) {
+                        iCategoryRepository.delete(nn);
+                        sb = sb + nn + ",";
+                    }
+                    if (sb != null && !"".equals(sb)) {
+                        deleteyz(sb.substring(0, sb.length() - 1));
+                    }
+                }
+            }
+            return Message.deletesuccess;
+        } catch (Exception e) {
+            return Message.deletefaile;
         }
 
     }

@@ -110,12 +110,19 @@ public class UserinfoController {
 	 * 删除
 	 */
 	@RequestMapping("/delete")
-	public void delete(String ids) {
-		iUserinfoService.delete(ids);
+	@ResponseBody
+	public String delete(String ids) {
+		String i = "成功";
+		try {
+			iUserinfoService.delete(ids);
+		} catch (Exception e) {
+			i = "失败";
+		}
+		return i;
 	}
 
 	/*
-	 * 删除
+	 * 查看单条信息
 	 */
 	@RequestMapping("/findOne")
 	@ResponseBody

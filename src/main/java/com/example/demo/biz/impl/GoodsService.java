@@ -38,7 +38,7 @@ public class GoodsService implements IGoodsService {
 
     @Override
     public Goods findGoodsByIdEnglish(Long goodsId) {
-        Object[] obj=iGoodRepository.findGoodsByIdEnglish(goodsId);
+        Object[] obj= (Object[]) iGoodRepository.findGoodsByIdEnglish(goodsId);
         Goods goods=new Goods();
         if (obj!=null){
             if (null != obj[0]) {
@@ -65,13 +65,14 @@ public class GoodsService implements IGoodsService {
             if (null != obj[7]) {
                 goods.setGoodsUrl(obj[7].toString());
             }
+            goods.setGoodsId(goodsId);
         }
         return goods;
     }
 
     @Override
     public Goods findGoodsByIdChinese(Long goodsId) {
-        Object[] obj=iGoodRepository.findGoodsByIdChinese(goodsId);
+        Object[] obj= (Object[]) iGoodRepository.findGoodsByIdChinese(goodsId);
         Goods goods=new Goods();
         if (obj!=null){
             if (null != obj[0]) {
@@ -98,6 +99,7 @@ public class GoodsService implements IGoodsService {
             if (null != obj[7]) {
                 goods.setGoodsUrl(obj[7].toString());
             }
+            goods.setGoodsId(goodsId);
         }
         return goods;
     }

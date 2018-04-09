@@ -10,6 +10,10 @@ import com.example.demo.biz.IBannerService;
 import com.example.demo.common.Message;
 import com.example.demo.dao.IBannerRepository;
 import com.example.demo.entity.Banner;
+
+import java.sql.Timestamp;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -33,8 +37,9 @@ public class BannerController {
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
 	public String saveAndflush(Banner banner) {
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
 		Date d = new Date();
-		banner.setTime(d);
+		banner.setTime(Timestamp.valueOf(sdf.format(d)));
 		try {
 			bannerRepository.saveAndFlush(banner);
 			return Message.SUCCESS;
@@ -45,9 +50,10 @@ public class BannerController {
 
 	// 删除
 	@RequestMapping("/delete")
+	@ResponseBody
 	public String delete(Long id) {	
 		try {
-			bannerRepository.delete(id);;
+			bannerRepository.delete(id);
 			return Message.SUCCESS;
 		} catch (Exception e) {
 			return Message.FAILURE;

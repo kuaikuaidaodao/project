@@ -146,9 +146,9 @@ public class GoodsController {
                 for (String id : idss)
                     iGoodsRepository.delete(Long.valueOf(id));
             }
-            return Message.deletesuccess;
+            return Message.SUCCESS;
         } catch (Exception e) {
-           return  Message.deletefaile;
+           return  Message.FAILURE;
         }
     }
     /**

@@ -5,9 +5,13 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.biz.IManPowerService;
 import com.example.demo.dao.IManPowerRepository;
@@ -58,4 +62,13 @@ public class ManPowerController {
 	public Object findOne(Long id) {
 		return manPowerREpository.findOne(id);
 	}
+	
+	@RequestMapping("/findBookNoQuery")
+    public String findBookNoQuery(ModelMap modelMap,@RequestParam(value = "page", defaultValue = "0") Integer page,
+                        @RequestParam(value = "size", defaultValue = "5") Integer size){
+        Page<ManPowerEntity> datas = manPowerService.findBookNoCriteria(page,size);
+        System.out.println(datas);
+        modelMap.addAttribute("datas", datas);
+        return "index1.html";
+    }
 }

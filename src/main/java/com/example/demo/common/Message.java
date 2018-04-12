@@ -102,7 +102,8 @@ public class Message {
     public static final String FACTORY_NAME_NUM="名称不能超过30个字";
     public static final String FACTORY_NAME_EN="英文名称不能为空";
     public static final String FACTORY_NAME_EN_NUM="英文名称不能超过100个字";
-    
+
+
     /**
      * 10.菜单
      */
@@ -110,8 +111,8 @@ public class Message {
     public static final String CATALOG_NAME_NUM="菜单名称不能大于30个字";
     public static final String CATALOG_NAME_EN="菜单英文名称不能为空";
     public static final String CATALOG_NAME_EN_NUM="菜单英文名称不能大于100个字";
-    
-    
+
+
     /**
      * 11.类目
      */
@@ -119,8 +120,8 @@ public class Message {
     public static final String CATEGORY_NAME_NUM="类目名称不能大于30个字";
     public static final String CATEGORY_NAME_EN="类目英文名称不能为空";
     public static final String CATEGORY_NAME_EN_NUM="类目英文名称不能大于100个字";
-    
-    
+
+
     /**
      * 12.商品
      */
@@ -171,4 +172,18 @@ public class Message {
     public static final String BRAND_NAME_EN_NUM="品牌英文名称不能超过100个字";
     public static final String BRAND_URL_NUM="品牌链接地址不能超过100个字";
     public static final String BRAND_SORT="排序不能大于999";
+
+    /**
+     * 图片上传
+     */
+    public static final String NULLPIC="请选择图片";
+    public static final String PICMAX="图片大小不能超过10M";
+    public static final String PICTYPE="图片类型不符";
+    /**
+     * 文件上传
+     */
+    public static final String NULLFILE="请选择文件";
+    public static final String FILEMAX="文件大小不能超过10M";
+    public static final String FILETYPE="文件类型不符";
+
 }

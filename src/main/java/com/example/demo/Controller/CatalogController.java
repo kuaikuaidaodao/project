@@ -156,6 +156,7 @@ public class CatalogController {
         String fileName = file.getOriginalFilename();
         fileName = fileName.substring(fileName.lastIndexOf("."));
         //获取跟目录
+        System.out.println(file.getSize());
         File path = null;
         try {
             path = new File(ResourceUtils.getURL("classpath:").getPath());

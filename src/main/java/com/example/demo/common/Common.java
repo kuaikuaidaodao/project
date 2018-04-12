@@ -6,10 +6,5 @@ package com.example.demo.common;
  * @desc 公共类
  **/
 public class Common {
-    public static boolean isNotNull(String string){
-        if (null==string||"".equals(string)){
-            return false;
-        }
-        return true;
-    }
+     
 }

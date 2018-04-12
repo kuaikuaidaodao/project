@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DemoApplication extends SpringBootServletInitializer {
     @RequestMapping("/")
 	String home() {
-		return "/login.jsp";
+		return "index";
 	}
 
         @Override

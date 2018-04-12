@@ -64,6 +64,7 @@ public class FileController {
 
 	// 删除
 	@RequestMapping("/delete")
+	@ResponseBody
 	public String delete(Long id) {
 		try {
 			fileRepository.delete(id);

@@ -9,6 +9,9 @@ import com.example.demo.entity.Goods;
 import com.example.demo.entity.GoodsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -66,9 +69,7 @@ public class GoodsController {
     @RequestMapping("/findAll")
     @ResponseBody
     public List findAll(){
-
         return iGoodsRepository.findAll();
-
     }
    /**
      *增加 修改
@@ -180,7 +181,13 @@ public class GoodsController {
     @RequestMapping("/findByGoodsName")
     @ResponseBody
     public GoodsEntity findByGoodsName(String goodsName){
-        GoodsEntity goodsEntity=iGoodsRepository.findByGoodsName(goodsName);
+        try {
+            goodsName=new String(goodsName.getBytes("ISO-8859-1"),"UTF-8");
+            System.out.println();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        GoodsEntity goodsEntity=iGoodsRepository.findByGoodsName(goodsName,goodsName);
         return goodsEntity;
 
     }

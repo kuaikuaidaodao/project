@@ -55,6 +55,7 @@ public class IdeaController {
 	
 	//删除
 	@RequestMapping("/delete")
+	@ResponseBody
 	public String delete(Long id) {
 		try {
 			ideaRepository.delete(id);

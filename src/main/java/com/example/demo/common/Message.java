@@ -7,7 +7,7 @@ package com.example.demo.common;
  **/
 public class Message {
     /**
-     * 用户
+     * 1.用户
      */
     public static final String LoginSuccess="登陆成功";
     public static final String LoginFaile="用户名不存在或密码错误";
@@ -20,7 +20,7 @@ public class Message {
     
     
     /**
-     * 文件管理
+     * 2.文件管理
      */
     public static final String SUCCESS ="操作成功";
     public static final String FAILURE ="操作失败";
@@ -32,7 +32,7 @@ public class Message {
     public static final String FILE_EN = "未上传英文文件";
     
     /**
-     * 友情链接
+     * 3.友情链接
      */
     public static final String LINK_NAME="链接名称不能为空";
     public static final String LINK_NAME_EN="链接英文名称不能为空";
@@ -43,7 +43,7 @@ public class Message {
     
 
     /**
-     * 公司介绍
+     * 4.公司介绍
      */
     public static final String COMPANY_NAME="公司名称不能为空";
     public static final String COMPANY_NAME_NUM="公司名称不能大于30个字";
@@ -58,7 +58,7 @@ public class Message {
     
     
     /**
-     * 新闻资讯
+     * 5.新闻资讯
      */
     public static final String NEWS_NAME="新闻名称不能为空";
     public static final String NEWS_NAME_EN="新闻英文名称不能为空";
@@ -72,13 +72,13 @@ public class Message {
     
     
     /**
-     * 资历证书
+     * 6.资历证书
      */
     public static final String CERTIFICATE_CONTEXT="证书内容不能为空";
   
 
     /**
-     * 画册
+     * 7.画册
      */
     public static final String PHOTO_NAME="画册名称不能为空";
     public static final String PHOTO_NAME_NUM="画册名称不能大于30个字";
@@ -87,16 +87,16 @@ public class Message {
     
     
     /**
-     * 品牌理念
+     * 8.品牌理念
      */
     public static final String IDEA_NAME="名称不能为空";
     public static final String IDEA_NAME_NUM="名称不能大于30个字";
     public static final String IDEA_NAME_EN="英文名称不能为空";
-    public static final String IDEA_NAME_EN_NUM="英文名称不能大于30个字";
+    public static final String IDEA_NAME_EN_NUM="英文名称不能大于100个字";
     public static final String IDEA_CONTEXT="内容不能为空";
     
     /**
-     * 工厂展示
+     * 9.工厂展示
      */
     public static final String FACTORY_NAME="名称不能为空";
     public static final String FACTORY_NAME_NUM="名称不能超过30个字";
@@ -104,7 +104,7 @@ public class Message {
     public static final String FACTORY_NAME_EN_NUM="英文名称不能超过100个字";
     
     /**
-     * 菜单
+     * 10.菜单
      */
     public static final String CATALOG_NAME="菜单名称不能为空";
     public static final String CATALOG_NAME_NUM="菜单名称不能大于30个字";
@@ -113,7 +113,7 @@ public class Message {
     
     
     /**
-     * 类目
+     * 11.类目
      */
     public static final String CATEGORY_NAME="类目名称不能为空";
     public static final String CATEGORY_NAME_NUM="类目名称不能大于30个字";
@@ -122,7 +122,7 @@ public class Message {
     
     
     /**
-     * 商品
+     * 12.商品
      */
     public static final String GOODS_NAME="商品名称不能为空";
     public static final String GOODS_NAME_NUM="商品名称不能超过30个字";
@@ -133,7 +133,7 @@ public class Message {
     public static final String GOODS_BRAND_EN="商品英文品牌不能为空";
     public static final String GOODS_BRAND_EN_NUM="商品英文品牌不能超过100个字";
     public static final String GOODS_BULK="商品体积不能为空";
-    public static final String GOODS_BULE_NUN="商品体积不能超过30个字";
+    public static final String GOODS_BULK_NUN="商品体积不能超过30个字";
     public static final String GOODS_BULK_EN="商品英文体积不能为空";
     public static final String GOODS_BULK_EN_NUM="商品英文体积不能超过100个字";
     public static final String GOODS_MODEL="商品型号不能为空";
@@ -146,11 +146,29 @@ public class Message {
     public static final String GOODS_WEIGHT_EN_NUM="商品英文重量不能超过100个字";
     public static final String GOODS_NUMBER="商品数量不能为空";
     public static final String GOODS_NUMBER_NUM="商品数量不能超过30个字";
-    public static final String GOODS_NUMBER_EN="商品英文重量不能为空";
-    public static final String GOODS_NUMBER_EN_NUM="商品英文重量不能超过100个字";
+    public static final String GOODS_NUMBER_EN="商品英文数量不能为空";
+    public static final String GOODS_NUMBER_EN_NUM="商品英文数量不能超过100个字";
     
     
+    /**
+     * 13.联系方式
+     */
+    public static final String CONTACT_PHONE_NUM="联系电话不能超过30个字";
+    public static final String CONTACT_PHONE_EN_NUM="国际电话不能超过30个字";
+    public static final String CONTACT_FAX_NUM="传真不能超过30个字";
+    public static final String CONTACT_FAX_EN_NUM="国际传真不能超过30个字";
+    public static final String CONTACT_PC_NUM="邮政编码不能超过30个字";
+    public static final String CONTACT_PC_EN_NUM="国际邮政编码不能超过30个字";
+    public static final String CONTACT_EMAIL_NUM="邮箱不能超过30个字";
+    public static final String CONTACT_EMAIL_EN_NUM="国际邮箱不能超过30个字";
+    public static final String CONTACT_ADDRESS_NUM="公司地址不能超过100个字";
+    public static final String CONTACT_ADDRESS_EN_NUM="国际联系地址不能超过200个字";
     
-    
-    
+    /**
+     * 14.其他品牌
+     */
+    public static final String BRAND_NAME="品牌名称不能大于30个字";
+    public static final String BRAND_NAME_EN_NUM="品牌英文名称不能超过100个字";
+    public static final String BRAND_URL_NUM="品牌链接地址不能超过100个字";
+    public static final String BRAND_SORT="排序不能大于999";
 }

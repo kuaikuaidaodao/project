@@ -43,7 +43,7 @@ public class NewsDao implements INewsDao{
 				newsEn.setResource(obj[5].toString());
 			}
 			if (obj[6] != null) {
-				newsEn.setTime(obj[5].toString());
+				newsEn.setTime(obj[6].toString());
 			}
 			if (obj[7] != null) {
 				newsEn.setType(Long.valueOf(obj[7].toString()));

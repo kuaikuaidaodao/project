@@ -98,10 +98,10 @@ public class GoodsController {
 			return Message.GOODS_BULK;
 		}
     	if (goods.getGoodsBulkChinese().length()>30) {
-			return Message.GOODS_BULE_NUN;
+			return Message.GOODS_BULK_NUN;
 		}
     	if (goods.getGoodsBulkEnglish().length()>100) {
-    		return Message.GOODS_BRAND_EN_NUM;
+    		return Message.GOODS_BULK_EN_NUM;
 		}
     	if (goods.getGoodsModelChinese() == null || "".equals(goods.getGoodsModelChinese())) {
 			return Message.GOODS_MODEL;

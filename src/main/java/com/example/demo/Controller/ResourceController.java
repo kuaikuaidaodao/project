@@ -49,7 +49,7 @@ public class ResourceController {
         }
         String fileName = file.getOriginalFilename();
         fileName = fileName.substring(fileName.lastIndexOf("."));
-        String[] str={".rar",".zip",".tar"};
+        String[] str={".rar",".zip",".tar",".doc",".ppt",".xlsx",".pdf",".txt"};
         if (!Arrays.asList(str).contains(fileName)){
             map.put("status","error");
             map.put("message", Message.FILETYPE);

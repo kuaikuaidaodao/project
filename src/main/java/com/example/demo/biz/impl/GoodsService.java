@@ -109,6 +109,11 @@ public class GoodsService implements IGoodsService {
         return iGoodsDao.findByCategoryId(s);
     }
 
+    @Override
+    public List findAll(int page) {
+        return iGoodsDao.findAll(page);
+    }
+
     private List<Goods> cast(List<Object[]> list){
         List<Goods> good=new ArrayList<>();
         for (int i=0;i<list.size();i++) {

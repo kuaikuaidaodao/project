@@ -12,4 +12,6 @@ public interface IGoodsDao {
     List<Object[]> findGoodsEnglish(Long menuId);
 
     List findByCategoryId(String s);
+
+    List findAll(int page);
 }

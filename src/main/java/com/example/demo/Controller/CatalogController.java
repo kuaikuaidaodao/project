@@ -166,9 +166,9 @@ public class CatalogController {
                 path = new File("");
             }
 //如果上传目录为/static/images/upload/，则可以如下获取：
-            File load = new File(path.getAbsolutePath(), "static/images/upload\\");
-            if (!load.exists()) {
-                load.mkdirs();
+            File load = new File(path.getAbsolutePath(), "static/images/upload\\"+"20180329100802376.jpg");
+            if (load.exists()) {
+                load.delete();
             }
             System.out.println("upload url:" + load.getAbsolutePath());
             filePath = load.getAbsolutePath();
@@ -188,7 +188,7 @@ public class CatalogController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //返回json
+//        返回json
         return fileName;
     }
 

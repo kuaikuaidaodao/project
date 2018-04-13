@@ -21,4 +21,6 @@ public interface IGoodsService {
     Goods findGoodsByIdChinese(Long goodsId);
 
     List findByCategoryId(String s);
+//  查询全部分页
+    List findAll(int page);
 }

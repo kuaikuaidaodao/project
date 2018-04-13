@@ -40,8 +40,6 @@ public class ResourceController {
             map.put("message", Message.NULLFILE);
             return map;
         }
-        System.out.println(file+"---------");
-        System.out.println(fileMax+"---------");
         if (file.getSize()>fileMax){
             map.put("status","error");
             map.put("message", Message.FILEMAX);

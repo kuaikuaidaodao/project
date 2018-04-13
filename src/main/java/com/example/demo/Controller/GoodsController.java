@@ -68,12 +68,12 @@ public class GoodsController {
      */
     @RequestMapping("/findAll")
     @ResponseBody
-//    public List findAll(){
-//        return iGoodsRepository.findAll();
-//    }
-    public List findAll(int page){
-        return iGoodsService.findAll(page);
+    public List findAll(){
+        return iGoodsRepository.findAll();
     }
+//    public List findAll(int page){
+//        return iGoodsService.findAll(page);
+//    }
    /**
      *增加 修改
     */

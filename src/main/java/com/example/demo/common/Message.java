@@ -186,4 +186,6 @@ public class Message {
     public static final String FILEMAX="文件大小不能超过10M";
     public static final String FILETYPE="文件类型不符";
 
+    
+    public static final String USER_LOGIN="USER_LOGIN";
 }

@@ -174,13 +174,13 @@ public class Message {
     public static final String BRAND_SORT="排序不能大于999";
 
     /**
-     * 图片上传
+     * 15.图片上传
      */
     public static final String NULLPIC="请选择图片";
     public static final String PICMAX="图片大小不能超过10M";
     public static final String PICTYPE="图片类型不符";
     /**
-     * 文件上传
+     * 16.文件上传
      */
     public static final String NULLFILE="请选择文件";
     public static final String FILEMAX="文件大小不能超过10M";
@@ -188,4 +188,12 @@ public class Message {
 
     
     public static final String USER_LOGIN="USER_LOGIN";
+    
+    /**
+     * 17.视频
+     */
+    public static final String VIDEO_NAME="视频名称不能为空";
+    public static final String VIDEO_NAME_NUM="视频名称不能大于30个字";
+    public static final String VIDEO_NAME_EN="视频英文名称不能为空";
+    public static final String VIDEO_NAME_EN_NUM="视频英文名称不能大于100个字";
 }

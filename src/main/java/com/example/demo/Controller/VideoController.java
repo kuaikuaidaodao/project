@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.biz.IVideoService;
@@ -18,6 +19,8 @@ import com.example.demo.entity.VideoEntity;
  * @date 2018年4月18日 上午9:37:13
  * @desc 视频展示
  */
+@Controller
+@RequestMapping("/video")
 public class VideoController {
 
 	@Autowired

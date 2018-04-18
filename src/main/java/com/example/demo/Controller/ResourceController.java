@@ -27,6 +27,7 @@ import java.util.Map;
 public class ResourceController {
     static final long picMax=10*1024*1024;
     static final long fileMax=10*1024*1024;
+    static final long videoMax=800*1024*1024;
     @RequestMapping("/addFile")
     @ResponseBody
     //处理文件上传
@@ -157,5 +158,68 @@ public class ResourceController {
         }
 
     }
+    @RequestMapping("/addVideo")
+    @ResponseBody
+    //处理文件上传
+    public Object uploadVideo(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+        String filePath = null;
+        String ss = null;
+        Map map=new HashMap();
+        if (file.isEmpty()){
+            map.put("status","error");
+            map.put("message", Message.NULLPIC);
+            return map;
+        }
+        if (file.getSize()>videoMax){
+            map.put("status","error");
+            map.put("message", Message.VIDEOMAX);
+            return map;
+        }
+        String fileName = file.getOriginalFilename();
+        fileName = fileName.substring(fileName.lastIndexOf("."));
+        String[] str={".mp4",".webm",".ogv"};
+        if (!Arrays.asList(str).contains(fileName)){
+            map.put("status","error");
+            map.put("message", Message.PICTYPE);
+            return map;
+        }
 
+        //获取跟目录
+        File path = null;
+        try {
+            path = new File(ResourceUtils.getURL("classpath:").getPath());
+            System.out.println(path);
+
+            if (!path.exists()) {
+                path = new File("");
+            }
+            File load = new File(path.getAbsolutePath(), "static/video/upload\\");
+            if (!load.exists()) {
+                load.mkdirs();
+            }
+            System.out.println("upload url:" + load.getAbsolutePath());
+            filePath = load.getAbsolutePath();
+            File targetFile = new File(load.getAbsolutePath());
+            if (!targetFile.exists()) {
+                targetFile.mkdirs();
+            }
+            //格式化日期
+            SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+            fileName = format.format(new Date()) + fileName;
+
+            ss = filePath + "/" + fileName;
+            FileOutputStream out = new FileOutputStream(ss);
+            out.write(file.getBytes());
+            out.flush();
+            out.close();
+            map.put("status","success");
+            map.put("message", fileName);
+            return  map;
+        } catch (Exception e) {
+            map.put("status","error");
+            map.put("message", e);
+            return  map;
+        }
+
+    }
 }

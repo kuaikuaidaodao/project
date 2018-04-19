@@ -197,4 +197,18 @@ public class Message {
     public static final String VIDEO_NAME_NUM="视频名称不能大于30个字";
     public static final String VIDEO_NAME_EN="视频英文名称不能为空";
     public static final String VIDEO_NAME_EN_NUM="视频英文名称不能大于100个字";
+    
+    /**
+     * 18.留言
+     */
+    public static final String MESSAGE_NAME="姓名不能为空";
+    public static final String MESSAGE_NAME_NUM="姓名不能大于30个字";
+    public static final String MESSAGE_TITLE_NUM="标题不能大于30个字";
+    public static final String MESSAGE_EMAIL="邮箱不能为空";
+    public static final String MESSAGE_EMAIL_NUM="邮箱不能大于100个字";
+    public static final String MESSAGE_COMPANY_NUM="公司名称不能大于100个字";
+    public static final String MESSAGE_CONTEXT="内容不能不为空";
+    public static final String MESSAGE_CONTEXT_NUM="内容不能大于10000个字";
+    public static final String MESSAGE_ADDRESS_NUM="所在地区不能大于200个字";
+    public static final String MESSAGE_PHONE_NUM="电话不能大于30个字";
 }

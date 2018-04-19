@@ -57,7 +57,7 @@ public class MessagesController {
 				message.setTime(new Date());
 				message.setType((long)0);
 				messageRepository.saveAndFlush(message);
-				return Message.SUCCESS;
+				return "success";
 			}
 		}if (message.getTitle().length()>30) {
 			return Message.MESSAGE_TITLE_NUM;

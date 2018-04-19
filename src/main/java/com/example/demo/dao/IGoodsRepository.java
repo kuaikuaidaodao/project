@@ -18,4 +18,5 @@ public interface IGoodsRepository extends JpaRepository<GoodsEntity, Long> {
     Object findGoodsByIdEnglish(Long goodsId);
     @Query("select  goodsNameChinese as goodsName,goodsInfoChinese as goodsInfo,goodsModelChinese as goodsModel,goodsBrandChinese as goodsBrand,goodsNumberChinese as goodsNumber,goodsBulkChinese as goodsBulk,goodsWeightChinese as goodsWeight,goodsUrlChinese as goodsUrl from GoodsEntity where goodsId=?1")
     Object findGoodsByIdChinese(Long goodsId);
+
 }

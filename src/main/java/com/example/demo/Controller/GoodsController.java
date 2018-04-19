@@ -34,7 +34,7 @@ public class GoodsController {
     IGoodsRepository iGoodsRepository;
     @Autowired
     ICategoryRepository iCategoryRepository;
-    Set childMenu=new HashSet();
+     Set childMenu=null;
     /**
      * 查全部 中英文
      */
@@ -54,6 +54,7 @@ public class GoodsController {
     @RequestMapping("/findByCategoryId")
     @ResponseBody
     public List findByCategoryId(Long categoryId){
+            childMenu=new HashSet();
             Set list=treeMenuList(iCategoryRepository.findAll(),categoryId);
             StringBuffer sb=new StringBuffer("(");
             for (Object li:list){
@@ -61,7 +62,13 @@ public class GoodsController {
             }
             sb.append(categoryId);
             sb.append(" )");
-            return iGoodsService.findByCategoryId(sb.toString());
+        String local= this.local();
+        if (local.equals("en_US")){
+            return iGoodsService.findByCategoryIdEnglish(sb.toString());
+        }else{
+            return iGoodsService.findByCategoryIdChinese(sb.toString());
+        }
+
     }
     /**
      * 全部商品

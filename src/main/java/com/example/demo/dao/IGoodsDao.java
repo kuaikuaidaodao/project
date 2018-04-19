@@ -14,4 +14,8 @@ public interface IGoodsDao {
     List findByCategoryId(String s);
 
     List findAll(int page);
+
+    List findByCategoryIdChinese(String s);
+
+    List findByCategoryIdEnglish(String s);
 }

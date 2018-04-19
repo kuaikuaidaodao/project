@@ -216,7 +216,7 @@ public class Message {
      */
     public static final String MESSAGE_NAME_EN="The name cannot be empty";
     public static final String MESSAGE_NAME_NUM_EN="The name can't be more than 30 words";
-    public static final String MESSAGE_TITLE_NUM_EN="The title can't be larger than 30 words";
+    public static final String MESSAGE_TITLE_NUM_EN="The title can't be larger than 100 words";
     public static final String MESSAGE_EMAIL_EN="Mailbox cannot be empty";
     public static final String MESSAGE_EMAIL_NUM_EN="A mailbox can't be larger than 100 words";
     public static final String MESSAGE_COMPANY_NUM_EN="The name of the company can not be more than 100 words";

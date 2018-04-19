@@ -33,7 +33,7 @@ public class MessagesController {
 	public String saveAndFlush(MessagesEntity message) {
 		Locale locale = LocaleContextHolder.getLocale();
 		if (locale.toString() != null && locale.toString().equals("en_US")) {
-			if (message.getTitle().length()>30) {
+			if (message.getTitle().length()>100) {
 				return Message.MESSAGE_TITLE_NUM_EN;
 			}if (message.getName()==null || "".equals(message.getName())) {
 				return Message.MESSAGE_NAME_EN;

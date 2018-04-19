@@ -110,6 +110,18 @@ public class GoodsService implements IGoodsService {
     }
 
     @Override
+    public List findByCategoryIdChinese(String s) {
+        List<Object[]> list=iGoodsDao.findByCategoryIdChinese(s);
+        return this.cast(list);
+    }
+
+    @Override
+    public List findByCategoryIdEnglish(String s) {
+        List<Object[]> list=iGoodsDao.findByCategoryIdEnglish(s);
+        return this.cast(list);
+    }
+
+    @Override
     public List findAll(int page) {
         return iGoodsDao.findAll(page);
     }

@@ -3,12 +3,14 @@ package com.example.demo.dao.impl;
 import com.example.demo.common.Page;
 import com.example.demo.dao.ICategoryRepository;
 import com.example.demo.dao.IGoodsDao;
+import com.example.demo.entity.Goods;
 import com.example.demo.entity.GoodsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -66,6 +68,28 @@ public class GoodsDao implements IGoodsDao {
             query.setFirstResult(start);
         }
         List<GoodsEntity> list=query.getResultList();
+        return list;
+    }
+
+    @Override
+    public List findByCategoryIdChinese(String s) {
+        StringBuffer sb=new StringBuffer();
+        sb.append(" select  goodsId, goodsNameChinese as goodsName,goodsInfoChinese as goodsInfo,goodsModelChinese as goodsModel,goodsBrandChinese as goodsBrand,goodsNumberChinese as goodsNumber,goodsBulkChinese as goodsBulk,goodsWeightChinese as goodsWeight,goodsUrlChinese as goodsUrl from GoodsEntity  where categoryId  in ");
+        sb.append(s);
+        sb.append(" order by sort ");
+        Query query =  entityManager.createQuery(sb.toString());
+        List list=query.getResultList();
+        return list;
+    }
+
+    @Override
+    public List findByCategoryIdEnglish(String s) {
+        StringBuffer sb=new StringBuffer();
+        sb.append(" select  goodsId, goodsNameEnglish as goodsName,goodsInfoEnglish as goodsInfo,goodsModelEnglish as goodsModel,goodsBrandEnglish as goodsBrand,goodsNumberEnglish as goodsNumber,goodsBulkEnglish as goodsBulk,goodsWeightEnglish as goodsWeight,goodsUrlEnglish as goodsUrl from GoodsEntity  where categoryId  in ");
+        sb.append(s);
+        sb.append(" order by sort ");
+        Query query =  entityManager.createQuery(sb.toString());
+        List list=query.getResultList();
         return list;
     }
 }

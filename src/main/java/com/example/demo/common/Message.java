@@ -211,4 +211,17 @@ public class Message {
     public static final String MESSAGE_CONTEXT_NUM="内容不能大于10000个字";
     public static final String MESSAGE_ADDRESS_NUM="所在地区不能大于200个字";
     public static final String MESSAGE_PHONE_NUM="电话不能大于30个字";
+    /**
+     * 18.留言英文提示
+     */
+    public static final String MESSAGE_NAME_EN="The name cannot be empty";
+    public static final String MESSAGE_NAME_NUM_EN="The name can't be more than 30 words";
+    public static final String MESSAGE_TITLE_NUM_EN="The title can't be larger than 30 words";
+    public static final String MESSAGE_EMAIL_EN="Mailbox cannot be empty";
+    public static final String MESSAGE_EMAIL_NUM_EN="A mailbox can't be larger than 100 words";
+    public static final String MESSAGE_COMPANY_NUM_EN="The name of the company can not be more than 100 words";
+    public static final String MESSAGE_CONTEXT_EN="The content should not be empty";
+    public static final String MESSAGE_CONTEXT_NUM_EN="The content can't be more than 10000 words";
+    public static final String MESSAGE_ADDRESS_NUM_EN="The address can't be more than 200 words";
+    public static final String MESSAGE_PHONE_NUM_EN="The phone can't be more than 30 words";
 }

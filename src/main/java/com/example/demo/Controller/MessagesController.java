@@ -2,8 +2,10 @@ package com.example.demo.Controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,7 +31,35 @@ public class MessagesController {
 	@RequestMapping("/saveAndFlush")
 	@ResponseBody
 	public String saveAndFlush(MessagesEntity message) {
-		if (message.getTitle().length()>30) {
+		Locale locale = LocaleContextHolder.getLocale();
+		if (locale.toString() != null && locale.toString().equals("en_US")) {
+			if (message.getTitle().length()>30) {
+				return Message.MESSAGE_TITLE_NUM_EN;
+			}if (message.getName()==null || "".equals(message.getName())) {
+				return Message.MESSAGE_NAME_EN;
+			}if (message.getName().length()>30) {
+				return Message.MESSAGE_NAME_NUM_EN;
+			}if (message.getEmail()==null || "".equals(message.getEmail())) {
+				return Message.MESSAGE_EMAIL_EN;
+			}if (message.getEmail().length()>100) {
+				return Message.MESSAGE_EMAIL_NUM_EN;
+			}if (message.getCompanyName().length()>100) {
+				return Message.MESSAGE_COMPANY_NUM_EN;
+			}if (message.getPhone().length()>30) {
+				return Message.MESSAGE_PHONE_NUM_EN;
+			}if (message.getContext()==null || "".equals(message.getContext())) {
+				return Message.MESSAGE_CONTEXT_EN;
+			}if (message.getContext().length()>10000) {
+				return Message.MESSAGE_CONTEXT_NUM_EN;
+			}if (message.getAddress().length()>200) {
+				return Message.MESSAGE_ADDRESS_NUM_EN;
+			}else {
+				message.setTime(new Date());
+				message.setType((long)0);
+				messageRepository.saveAndFlush(message);
+				return Message.SUCCESS;
+			}
+		}if (message.getTitle().length()>30) {
 			return Message.MESSAGE_TITLE_NUM;
 		}if (message.getName()==null || "".equals(message.getName())) {
 			return Message.MESSAGE_NAME;

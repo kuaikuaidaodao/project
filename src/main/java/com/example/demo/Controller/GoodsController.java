@@ -188,17 +188,31 @@ public class GoodsController {
     /**
      * 搜索
      */
-    @RequestMapping("/findByGoodsName")
+    @RequestMapping("/findByGoodsModel")
     @ResponseBody
-    public GoodsEntity findByGoodsName(String goodsName){
+    public  List<GoodsEntity> findByGoodsModel(String goodsModel){
         try {
-            goodsName=new String(goodsName.getBytes("ISO-8859-1"),"UTF-8");
-            System.out.println();
+            goodsModel=new String(goodsModel.getBytes("ISO-8859-1"),"UTF-8");
+            System.out.println(goodsModel);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        GoodsEntity goodsEntity=iGoodsRepository.findByGoodsName(goodsName,goodsName);
+        List<GoodsEntity> goodsEntity=iGoodsRepository.findByGoodsModel(goodsModel,goodsModel);
         return goodsEntity;
+
+    }
+    /**
+     * 搜索中英文
+     */
+    @RequestMapping("/findByGoodsModelLange")
+    @ResponseBody
+    public  List findByGoodsModelLange(String goodsModel){
+        String local= this.local();
+        if (local.equals("en_US")){
+            return iGoodsService.findByGoodsModelEnglish(goodsModel);
+        }else{
+            return iGoodsService.findByGoodsModelChinese(goodsModel);
+        }
 
     }
     /**

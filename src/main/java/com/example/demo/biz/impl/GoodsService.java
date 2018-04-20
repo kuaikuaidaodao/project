@@ -4,6 +4,7 @@ import com.example.demo.biz.IGoodsService;
 import com.example.demo.dao.IGoodsDao;
 import com.example.demo.dao.IGoodsRepository;
 import com.example.demo.entity.Goods;
+import com.example.demo.entity.GoodsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -124,6 +125,18 @@ public class GoodsService implements IGoodsService {
     @Override
     public List findAll(int page) {
         return iGoodsDao.findAll(page);
+    }
+
+    @Override
+    public List findByGoodsModelEnglish(String goodsModel) {
+        List<Object[]> list=iGoodRepository.findByGoodsModelEnglish(goodsModel);
+        return this.cast(list);
+    }
+
+    @Override
+    public List findByGoodsModelChinese(String goodsModel) {
+        List<Object[]> list=iGoodRepository.findByGoodsModelChinese(goodsModel);
+        return this.cast(list);
     }
 
     private List<Goods> cast(List<Object[]> list){

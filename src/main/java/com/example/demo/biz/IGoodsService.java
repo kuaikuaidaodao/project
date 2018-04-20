@@ -1,6 +1,7 @@
 package com.example.demo.biz;
 
 import com.example.demo.entity.Goods;
+import com.example.demo.entity.GoodsEntity;
 
 import java.util.List;
 
@@ -26,4 +27,8 @@ public interface IGoodsService {
     List findByCategoryIdEnglish(String s);
 //  查询全部分页
     List findAll(int page);
+
+    List findByGoodsModelEnglish(String goodsModel);
+
+    List findByGoodsModelChinese(String goodsMode);
 }
